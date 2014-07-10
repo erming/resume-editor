@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+}
+.container {
+	max-width: 420px;
+}
+textarea {
+	border: 2px solid #e9ecef;
+	outline: 0;
+	resize: none;
+}
+#sidebar {
+	background: #fff;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 320px;
+}
+#sidebar {
+	padding: 30px 20px;
+}
+#sidebar button {
+	padding: 8px 16px;
+	width: 100%;
+}
+#preview {
+	background: #f4f6f6;
+	bottom: 0;
+	left: 320px;
+	overflow: hidden;
+	padding-left: 4px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#preview #iframe {
+	border: 0;
+	height: 100%;
+	margin: 0;
+	width: 100%;
+}
