@@ -23,7 +23,7 @@
 		<iframe id="iframe"></iframe>
 	</div>
 	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
 	$(function() {
 		var resume = $("#resume");
@@ -38,17 +38,18 @@
 		var sidebar = $("#sidebar");
 		sidebar.on("submit", function(e) {
 			e.preventDefault();
-			var data = $.parseJSON(resume.text());
+			var data = JSON.stringify({
+				resume: JSON.parse(resume.val())
+			});
 			$.ajax({
 				type: "POST",
 				url: "http://themes.jsonresume.org/theme/flat",
-				data: {
-					resume: data
-				},
+				contentType: "application/json",
+				data: data,
 				success: function(html) {
 					$("#iframe").contents().find("body").html(html);
 				}
-			})
+			});
 		});
 	});
 	</script>
