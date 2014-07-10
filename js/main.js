@@ -31,10 +31,6 @@ $(function() {
 		});
 	});
 	
-	form.on("click", "input", function() {
-		$(this).select();
-	});
-	
 	var resume = {
 		bio: {
 			firstName: "",
@@ -43,15 +39,27 @@ $(function() {
 				city : ""
 			},
 			summary: "",
-			phone: {
+			email: {
+				work: "",
 				personal: ""
+			},
+			phone: {
+				work: "",
+				personal: ""
+			},
+			profiles: {
+				github: "",
+				twitter: ""
 			}
 		}
 	};
 	
 	var inputs = form
 		.find("input")
-		.on("input", update);
+		.on("input", update)
+		.on("click", function() {
+			$(this).select();
+		});
 	
 	function update() {
 		inputs.each(function() {

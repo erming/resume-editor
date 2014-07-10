@@ -1,8 +1,13 @@
+@import url(
+	http://fonts.googleapis.com/css?family=Lato:400,700
+);
+
 html,
 body {
 	height: 100%;
 }
 body {
+	font: 14px Lato, sans-serif;
 	margin: 0;
 }
 .container {
@@ -20,7 +25,9 @@ body {
 	top: 0;
 	width: 320px;
 }
-
+#sidebar h3 {
+	color: #7f8c8d;
+}
 #sidebar label {
 	margin: 2px 0 10px 0;
 }
@@ -28,6 +35,8 @@ body {
 #sidebar textarea {
 	border: 2px solid #e9ecef;
 	border-radius: 3px;
+	font-size: 13px;
+	margin: 2px 0 0;
 	outline: 0;
 	padding: 6px 8px;
 	resize: none;
