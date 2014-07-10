@@ -1,28 +1,43 @@
+html,
+body {
+	height: 100%;
+}
 body {
 	margin: 0;
 }
 .container {
 	max-width: 420px;
 }
-textarea {
-	border: 2px solid #e9ecef;
-	outline: 0;
-	resize: none;
-}
 #sidebar {
 	background: #fff;
 	bottom: 0;
 	left: 0;
+	padding: 30px 20px;
 	position: absolute;
 	top: 0;
 	width: 320px;
 }
-#sidebar {
-	padding: 30px 20px;
-}
 #sidebar button {
 	padding: 8px 16px;
 	width: 100%;
+}
+
+#sidebar .textarea {
+	position: absolute;
+	left: 20px;
+	top: 90px;
+	bottom: 30px;
+	width: 280px;
+}
+#sidebar .textarea textarea {
+	border: 2px solid #e9ecef;
+	border-radius: 2px;
+	height: 100%;
+	outline: 0;
+	overflow: auto;
+	width: 100%;
+	white-space: pre;
+	word-wrap: normal;
 }
 #preview {
 	background: #f4f6f6;
