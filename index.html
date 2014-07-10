@@ -11,16 +11,16 @@
 	</head>
 	<body>
 	
-	<form id="sidebar" target="preview">
-		<div class="col-xs-12">
-			<button type="submit">Update preview</button>
+	<form id="sidebar" action="">
+		<div class="fields">
+			<textarea id="resume"></textarea>
 		</div>
-		<div class="col-xs-12 textarea">
-			<textarea id="resume" name="resume"></textarea>
+		<div class="submit">
+			<button type="submit">Update preview</button>
 		</div>
 	</form>
 	<div id="preview">
-		<iframe id="iframe" name="preview"></iframe>
+		<iframe id="iframe"></iframe>
 	</div>
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -37,7 +37,18 @@
 		
 		var sidebar = $("#sidebar");
 		sidebar.on("submit", function(e) {
-			$("#sidebar").attr("action", "http://themes.jsonresume.org/theme/flat");
+			e.preventDefault();
+			var data = $.parseJSON(resume.text());
+			$.ajax({
+				type: "POST",
+				url: "http://themes.jsonresume.org/theme/flat",
+				data: {
+					resume: data
+				},
+				success: function(html) {
+					$("#iframe").contents().find("body").html(html);
+				}
+			})
 		});
 	});
 	</script>

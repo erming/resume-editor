@@ -17,22 +17,33 @@ body {
 	top: 0;
 	width: 320px;
 }
-#sidebar button {
-	padding: 8px 16px;
+#sidebar .fields,
+#sidebar .submit {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+}
+#sidebar .fields {
+	bottom: 90px;
+	padding: 30px;
+	padding-bottom: 0;
+	top: 0;
+}
+#sidebar .submit {
+	bottom: 0;
+	padding: 30px;
+	height: 90px;
+}
+#sidebar .submit button {
+	padding: 6px 0;
 	width: 100%;
 }
-
-#sidebar .textarea {
-	position: absolute;
-	left: 20px;
-	top: 90px;
-	bottom: 30px;
-	width: 280px;
-}
-#sidebar .textarea textarea {
+#resume {
 	border: 2px solid #e9ecef;
 	border-radius: 2px;
-	height: 100%;
+	font: 12px monospace;
+	min-height: 100%;
 	outline: 0;
 	overflow: auto;
 	width: 100%;
