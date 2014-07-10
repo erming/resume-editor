@@ -8,47 +8,46 @@ body {
 .container {
 	max-width: 420px;
 }
+.row {
+	margin: 0 -10px;
+}
 #sidebar {
 	background: #fff;
 	bottom: 0;
 	left: 0;
-	padding: 30px 20px;
+	overflow-x: auto;
 	position: absolute;
 	top: 0;
 	width: 320px;
 }
-#sidebar .fields,
-#sidebar .submit {
-	bottom: 0;
-	left: 0;
-	position: absolute;
-	right: 0;
+
+#sidebar label {
+	margin: 2px 0 10px 0;
+}
+#sidebar input,
+#sidebar textarea {
+	border: 2px solid #e9ecef;
+	border-radius: 3px;
+	outline: 0;
+	padding: 6px 8px;
+	resize: none;
+	transition: border-color .2s;
+	width: 100%;
+}
+#sidebar input:hover {
+	border-color: #bdc3c7;
+}
+#sidebar input:focus {
+	border-color: #2ecc71;
+}
+#sidebar [class*='col-xs-'] {
+	padding: 0 10px;
 }
 #sidebar .fields {
-	bottom: 90px;
-	padding: 30px;
-	padding-bottom: 0;
-	top: 0;
+	height: 100%;
 }
-#sidebar .submit {
-	bottom: 0;
-	padding: 30px;
-	height: 90px;
-}
-#sidebar .submit button {
-	padding: 6px 0;
-	width: 100%;
-}
-#resume {
-	border: 2px solid #e9ecef;
-	border-radius: 2px;
-	font: 12px monospace;
-	min-height: 100%;
-	outline: 0;
-	overflow: auto;
-	width: 100%;
-	white-space: pre;
-	word-wrap: normal;
+#sidebar .fields {
+	padding: 25px 30px 35px;
 }
 #preview {
 	background: #f4f6f6;

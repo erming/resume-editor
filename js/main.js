@@ -1,11 +1,11 @@
 $(function() {
 	var timer = null;
-	var resume = $("#resume").on("input", function() {
+	var textarea = $("#textarea").on("input", function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
 			var post = true;
 			try {
-				JSON.parse(resume.val());
+				JSON.parse(textarea.val());
 			} catch(e) {
 				post = false;
 			}
@@ -15,29 +15,57 @@ $(function() {
 		}, 250);
 	});
 	
-	$.ajax({
-		dataType: "text",
-		url: "resume.json",
-		success: function(json) {
-			resume.html(json);
-			form.trigger("submit");
-		}
-	});
-	
-	var form = $("#form");
-	form.on("submit", function(e) {
+	var form = $("#form").on("submit", function(e) {
 		e.preventDefault();
 		var data = JSON.stringify({
-			resume: JSON.parse(resume.val())
+			resume: JSON.parse(textarea.val())
 		});
 		$.ajax({
-			type: "POST",
-			url: "http://themes.jsonresume.org/theme/flat",
 			contentType: "application/json",
 			data: data,
+			url: "http://themes.jsonresume.org/theme/flat",
 			success: function(html) {
 				$("#iframe").contents().find("body").html(html);
-			}
+			},
+			type: "POST"
 		});
 	});
+	
+	form.on("click", "input", function() {
+		$(this).select();
+	});
+	
+	var resume = {
+		bio: {
+			firstName: "",
+			lastName: "",
+			location: {
+				city : ""
+			},
+			summary: "",
+			phone: {
+				personal: ""
+			}
+		}
+	};
+	
+	var inputs = form
+		.find("input")
+		.on("input", update);
+	
+	function update() {
+		inputs.each(function() {
+			var self = $(this);
+			try {
+				eval("resume." +  self.attr("name") + " = '" + self.val() + "'");
+			} catch(e) {
+				// ..
+			}
+		});
+		textarea.html(
+			JSON.stringify(resume, null, "  ")
+		).trigger("input");
+	}
+	
+	update();
 });
