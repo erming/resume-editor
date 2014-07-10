@@ -11,14 +11,16 @@
 	</head>
 	<body>
 	
-	<form id="sidebar" action="">
+	<aside id="sidebar">
+		<form id="form" action="">
 		<div class="fields">
 			<textarea id="resume"></textarea>
 		</div>
 		<div class="submit">
 			<button type="submit">Update preview</button>
 		</div>
-	</form>
+		</form>
+	</aside>
 	<div id="preview">
 		<iframe id="iframe"></iframe>
 	</div>
@@ -26,17 +28,33 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
 	$(function() {
-		var resume = $("#resume");
+		var timer = null;
+		var resume = $("#resume").on("input", function() {
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				var post = true;
+				try {
+					JSON.parse(resume.val());
+				} catch(e) {
+					post = false;
+				}
+				if (post) {
+					form.trigger("submit");
+				}
+			}, 250);
+		});
+		
 		$.ajax({
 			dataType: "text",
 			url: "resume.json",
 			success: function(json) {
 				resume.html(json);
+				form.trigger("submit");
 			}
 		});
 		
-		var sidebar = $("#sidebar");
-		sidebar.on("submit", function(e) {
+		var form = $("#form");
+		form.on("submit", function(e) {
 			e.preventDefault();
 			var data = JSON.stringify({
 				resume: JSON.parse(resume.val())
