@@ -1,11 +1,11 @@
 $(function() {
 	var timer = null;
-	var textarea = $("#textarea").on("input", function() {
+	var output = $("#output").on("input", function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
 			var post = true;
 			try {
-				JSON.parse(textarea.val());
+				JSON.parse(output.val());
 			} catch(e) {
 				post = false;
 			}
@@ -14,11 +14,11 @@ $(function() {
 			}
 		}, 250);
 	});
-	
+
 	var form = $("#form").on("submit", function(e) {
 		e.preventDefault();
 		var data = JSON.stringify({
-			resume: JSON.parse(textarea.val())
+			resume: JSON.parse(output.val())
 		});
 		$.ajax({
 			contentType: "application/json",
@@ -30,7 +30,7 @@ $(function() {
 			type: "POST"
 		});
 	});
-	
+
 	var resume = {
 		bio: {
 			firstName: "",
@@ -53,14 +53,14 @@ $(function() {
 			}
 		}
 	};
-	
+
 	var inputs = form
 		.find("input")
 		.on("input", update)
 		.on("click", function() {
 			$(this).select();
 		});
-	
+
 	function update() {
 		inputs.each(function() {
 			var self = $(this);
@@ -70,10 +70,15 @@ $(function() {
 				// ..
 			}
 		});
-		textarea.html(
+		output.html(
 			JSON.stringify(resume, null, "  ")
 		).trigger("input");
 	}
-	
+
 	update();
+
+	var sidebar = $("#sidebar");
+	setTimeout(function() {
+		sidebar.find(".header").eq(0).trigger("click");
+	}, 320);
 });

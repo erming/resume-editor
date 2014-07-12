@@ -1,76 +1,158 @@
 <!doctype html>
 <html>
 	<head>
-	
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 	<title>Edit</title>
-	
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
-	
+
 	<link rel="shortcut icon" href="icon.png">
-	
+
 	</head>
 	<body>
-	
+
+	<textarea id="output" style="display: none;"></textarea>
+
 	<aside id="sidebar">
 		<form id="form" action="">
+		<section>
+			<header class="header collapsed" data-target="#bio" data-toggle="collapse" data-parent="#sidebar">
+				Bio
+			</header>
+			<div id="bio" class="collapse content">
+				<div class="row">
+					<label class="col-xs-6">
+						<strong>First Name</strong>
+						<input name="bio.firstName" value="Richard">
+					</label>
+					<label class="col-xs-6">
+						<strong>Last Name</strong>
+						<input name="bio.lastName" value="Hendriks">
+					</label>
+					<label class="col-xs-12">
+						<strong>Summary</strong>
+						<input name="bio.summary" value="Richard hails from Tulsa. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!) Before starting Pied Piper, he worked for Hooli as a part time software developer. While his work focuses on applied information theory, mostly optimizing lossless compression schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from quantum computing to chaos theory. He could tell you about it, but THAT would NOT be a “length-limited” conversation!">
+					</label>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#location" data-toggle="collapse" data-parent="#sidebar">
+				Location
+			</header>
+			<div id="location" class="collapse content">
+				<div class="row">
+					<label class="col-xs-12">
+						<strong>City</strong>
+						<input name="bio.location.city" value="San Francisco">
+					</label>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#contact" data-toggle="collapse" data-parent="#sidebar">
+				Contact
+			</header>
+			<div id="contact" class="collapse content">
+				<div class="row">
+					<label class="col-xs-12">
+						<strong>Email</strong>
+						<input name="bio.email.personal" value="richard.hendriks@gmail.com">
+					</label>
+					<label class="col-xs-12">
+						<strong>Phone</strong>
+						<input name="bio.phone.personal" value="(912) 555-4321">
+					</label>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#profiles" data-toggle="collapse" data-parent="#sidebar">
+				Profiles
+			</header>
+			<div id="profiles" class="collapse content">
+				<div class="row">
+					<label class="col-xs-6">
+						<strong>GitHub</strong>
+						<input name="bio.profiles.github" value="richardhendriks">
+					</label>
+					<label class="col-xs-6">
+						<strong>Twitter</strong>
+						<input name="bio.profiles.twitter" value="richardhendriks">
+					</label>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#work" data-toggle="collapse" data-parent="#sidebar">
+				Work
+			</header>
+			<div id="work" class="collapse content">
+				<div class="row">
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#education" data-toggle="collapse" data-parent="#sidebar">
+				Education
+			</header>
+			<div id="education" class="collapse content">
+				<div class="row">
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#references" data-toggle="collapse" data-parent="#sidebar">
+				References
+			</header>
+			<div id="references" class="collapse content">
+				<div class="row">
+				</div>
+			</div>
+		</section>
+
+
+
+		<div class="hidden">
 		<div class="fields">
 			<div class="row">
-				<label class="col-xs-6">
-					<strong>First Name</strong>
-					<input name="bio.firstName" value="Richard">
-				</label>
-				<label class="col-xs-6">
-					<strong>Last Name</strong>
-					<input name="bio.lastName" value="Hendriks">
-				</label>
-				<label class="col-xs-12">
-					<strong>Summary</strong>
-					<input name="bio.summary" value="Richard hails from Tulsa. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!) Before starting Pied Piper, he worked for Hooli as a part time software developer. While his work focuses on applied information theory, mostly optimizing lossless compression schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from quantum computing to chaos theory. He could tell you about it, but THAT would NOT be a “length-limited” conversation!">
-				</label>
-				<label class="col-xs-12">
-					<strong>Email</strong>
-					<input name="bio.email.personal" value="richard.hendriks@gmail.com">
-				</label>
-				<label class="col-xs-12">
-					<strong>Phone</strong>
-					<input name="bio.phone.personal" value="(912) 555-4321">
-				</label>
+				<h3 class="col-xs-12">
+					Bio
+				</h3>
+
+			</div>
+			<div class="row">
 				<h3 class="col-xs-12">
 					Location
 				</h3>
-				<label class="col-xs-12">
-					<strong>City</strong>
-					<input name="bio.location.city" value="San Francisco">
-				</label>
+
+			</div>
+			<div class="row">
 				<h3 class="col-xs-12">
 					Profiles
 				</h3>
-				<label class="col-xs-6">
-					<strong>GitHub</strong>
-					<input name="bio.profiles.github" value="richardhendriks">
-				</label>
-				<label class="col-xs-6">
-					<strong>Twitter</strong>
-					<input name="bio.profiles.twitter" value="richardhendriks">
-				</label>
+
 				<label class="hidden">
 					<strong>JSON output</strong>
-					<textarea id="textarea" rows="16"></textarea>
+
 				</label>
 			</div>
+		</div>
 		</div>
 		</form>
 	</aside>
 	<div id="preview">
 		<iframe id="iframe"></iframe>
 	</div>
-	
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 	<script src="js/main.js"></script>
-	
+
 	</body>
 </html>

@@ -7,8 +7,13 @@ body {
 	height: 100%;
 }
 body {
+	color: #222;
 	font: 14px Lato, sans-serif;
 	margin: 0;
+}
+h3 {
+	margin: 0;
+	font-size: 18px;
 }
 .container {
 	max-width: 420px;
@@ -18,9 +23,10 @@ body {
 }
 #sidebar {
 	background: #fff;
+	border-right: 1px solid #bdc3c7;
 	bottom: 0;
 	left: 0;
-	overflow-x: auto;
+	overflow-x: hidden;
 	position: absolute;
 	top: 0;
 	width: 320px;
@@ -34,7 +40,7 @@ body {
 #sidebar input,
 #sidebar textarea {
 	border: 2px solid #e9ecef;
-	border-radius: 3px;
+	border-radius: 1px;
 	font-size: 13px;
 	margin: 2px 0 0;
 	outline: 0;
@@ -47,7 +53,7 @@ body {
 	border-color: #bdc3c7;
 }
 #sidebar input:focus {
-	border-color: #2ecc71;
+	border-color: #bdc3c7;
 }
 #sidebar [class*='col-xs-'] {
 	padding: 0 10px;
@@ -58,6 +64,47 @@ body {
 #sidebar .fields {
 	padding: 25px 30px 35px;
 }
+
+#sidebar .header,
+#sidebar .content {
+	border-bottom: 1px solid #ecf0f1;
+}
+#sidebar .header {
+	background: #f8fafa;
+	font-size: 18px;
+	cursor: pointer;
+	padding: 20px;
+	position: relative;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+#sidebar .header:hover {
+	background: #f8fafa;
+}
+#sidebar .header:hover:before {
+	color: #888;
+}
+#sidebar .header:before {
+	content: "\f0aa";
+	color: #888;
+	font: 16px Octicons;
+	position: absolute;
+	margin-top: 4px;
+	right: 25px;
+}
+#sidebar .collapsed {
+	background: #fff;
+}
+#sidebar .collapsed:before {
+	content: "\f05b";
+	color: #ccc;
+}
+#sidebar .content .row {
+	padding: 15px 20px;
+}
+
 #preview {
 	background: #f4f6f6;
 	bottom: 0;
