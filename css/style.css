@@ -22,7 +22,7 @@ h3 {
 	margin: 0 -10px;
 }
 #sidebar {
-	background: #fff;
+	background: #eee;
 	border-right: 1px solid #bdc3c7;
 	bottom: 0;
 	left: 0;
@@ -39,21 +39,19 @@ h3 {
 }
 #sidebar input,
 #sidebar textarea {
-	border: 2px solid #e9ecef;
+	border: 1px solid #ddd;
 	border-radius: 1px;
 	font-size: 13px;
-	margin: 2px 0 0;
+	margin: 3px 0 0;
 	outline: 0;
 	padding: 6px 8px;
 	resize: none;
 	transition: border-color .2s;
 	width: 100%;
 }
-#sidebar input:hover {
-	border-color: #bdc3c7;
-}
+#sidebar input:hover,
 #sidebar input:focus {
-	border-color: #bdc3c7;
+	border-color: #888;
 }
 #sidebar [class*='col-xs-'] {
 	padding: 0 10px;
@@ -67,13 +65,14 @@ h3 {
 
 #sidebar .header,
 #sidebar .content {
-	border-bottom: 1px solid #ecf0f1;
+	background: #fff;
+	border-bottom: 1px solid #ddd;
 }
 #sidebar .header {
-	background: #f8fafa;
-	font-size: 18px;
+	background: #eee;
+	font-size: 16px;
 	cursor: pointer;
-	padding: 20px;
+	padding: 15px 20px;
 	position: relative;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -81,18 +80,18 @@ h3 {
 	        user-select: none;
 }
 #sidebar .header:hover {
-	background: #f8fafa;
+	background: #eee;
 }
 #sidebar .header:hover:before {
-	color: #888;
+	color: #666;
 }
 #sidebar .header:before {
 	content: "\f0aa";
 	color: #888;
 	font: 16px Octicons;
 	position: absolute;
-	margin-top: 4px;
-	right: 25px;
+	margin-top: 2px;
+	right: 20px;
 }
 #sidebar .collapsed {
 	background: #fff;
@@ -104,13 +103,11 @@ h3 {
 #sidebar .content .row {
 	padding: 15px 20px;
 }
-
 #preview {
 	background: #f4f6f6;
 	bottom: 0;
 	left: 320px;
 	overflow: hidden;
-	padding-left: 4px;
 	position: absolute;
 	right: 0;
 	top: 0;
