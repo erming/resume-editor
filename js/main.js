@@ -56,10 +56,34 @@ $(function() {
 
 	var inputs = form
 		.find("input")
-		.on("input", update)
 		.on("click", function() {
 			$(this).select();
 		});
+
+	function iterate(obj, name) {
+		if ($.type(obj) == "object") {
+			for (var i in obj) {
+				iterate(obj[i], (name ? name + "." : "") + i);
+			}
+		} else if ($.type(obj) == "array") {
+			// ..
+		} else {
+			inputs.each(function() {
+				var input = $(this);
+				if (input.attr("name") == name) {
+					input.val(obj);
+				}
+			});
+		}
+	}
+
+	$.getJSON("resume.json", function(resume) {
+		iterate(resume);
+		update();
+		inputs.on("input", function() {
+			update();
+		});
+	});
 
 	function update() {
 		inputs.each(function() {
@@ -75,10 +99,12 @@ $(function() {
 		).trigger("input");
 	}
 
-	update();
-
 	var sidebar = $("#sidebar");
 	setTimeout(function() {
 		sidebar.find(".header").eq(0).trigger("click");
 	}, 320);
 });
+
+function isObject(obj) {
+	return Object.prototype.toString.call(obj) == "[object Object]";
+}
