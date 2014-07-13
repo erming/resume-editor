@@ -45,28 +45,10 @@
 						<strong>Summary</strong>
 						<input data-name="bio.summary">
 					</label>
-				</div>
-			</div>
-		</section>
-		<section>
-			<header class="header collapsed" data-target="#location" data-toggle="collapse" data-parent="#sidebar">
-				Location
-			</header>
-			<div id="location" class="collapse content">
-				<div class="row">
 					<label class="col-xs-12">
 						<strong>City</strong>
 						<input data-name="bio.location.city">
 					</label>
-				</div>
-			</div>
-		</section>
-		<section>
-			<header class="header collapsed" data-target="#contact" data-toggle="collapse" data-parent="#sidebar">
-				Contact
-			</header>
-			<div id="contact" class="collapse content">
-				<div class="row">
 					<label class="col-xs-12">
 						<strong>Email</strong>
 						<input data-name="bio.email.personal">
@@ -74,23 +56,6 @@
 					<label class="col-xs-12">
 						<strong>Phone</strong>
 						<input data-name="bio.phone.personal">
-					</label>
-				</div>
-			</div>
-		</section>
-		<section>
-			<header class="header collapsed" data-target="#profiles" data-toggle="collapse" data-parent="#sidebar">
-				Profiles
-			</header>
-			<div id="profiles" class="collapse content">
-				<div class="row">
-					<label class="col-xs-6">
-						<strong>GitHub</strong>
-						<input data-name="bio.profiles.github">
-					</label>
-					<label class="col-xs-6">
-						<strong>Twitter</strong>
-						<input data-name="bio.profiles.twitter">
 					</label>
 				</div>
 			</div>
@@ -136,6 +101,105 @@
 			</header>
 			<div id="education" class="collapse content">
 				<div class="row">
+					<div class="array" data-name="education">
+						<label class="col-xs-12">
+							Institution
+							<input name="institution">
+						</label>
+						<label class="col-xs-6">
+							Start date
+							<input name="startDate">
+						</label>
+						<label class="col-xs-6">
+							End date
+							<input name="endDate">
+						</label>
+						<label class="col-xs-12">
+							Area
+							<input name="area">
+						</label>
+						<label class="col-xs-12">
+							Study Type
+							<input name="studyType">
+						</label>
+						<label class="col-xs-12 disabled">
+							Courses
+							<input name="Courses" disabled>
+						</label>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#awards" data-toggle="collapse" data-parent="#sidebar">
+				Awards
+			</header>
+			<div id="awards" class="collapse content">
+				<div class="row">
+					<div class="array" data-name="awards">
+						<label class="col-xs-12">
+							Title
+							<input name="title">
+						</label>
+						<label class="col-xs-6">
+							Date
+							<input name="date">
+						</label>
+						<label class="col-xs-6">
+							Awarder
+							<input name="awarder">
+						</label>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#publications" data-toggle="collapse" data-parent="#sidebar">
+				Publications
+			</header>
+			<div id="publications" class="collapse content">
+				<div class="row">
+					<div class="array" data-name="publications">
+						<label class="col-xs-12">
+							Name
+							<input name="name">
+						</label>
+						<label class="col-xs-6">
+							Publisher
+							<input name="publisher">
+						</label>
+						<label class="col-xs-6">
+							Release date
+							<input name="releaseDate">
+						</label>
+						<label class="col-xs-12">
+							Website
+							<input name="website">
+						</label>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<header class="header collapsed" data-target="#skills" data-toggle="collapse" data-parent="#sidebar">
+				Skills
+			</header>
+			<div id="skills" class="collapse content">
+				<div class="row">
+					<div class="array" data-name="skills">
+						<label class="col-xs-12">
+							Name
+							<input name="name">
+						</label>
+						<label class="col-xs-12">
+							Level
+							<input name="level">
+						</div>
+						<label class="col-xs-12 disabled">
+							Keywords
+							<input name="keywords" disabled>
+						</label>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -145,6 +209,16 @@
 			</header>
 			<div id="references" class="collapse content">
 				<div class="row">
+					<div class="array" data-name="references">
+						<label class="col-xs-12">
+							Name
+							<input name="name">
+						</label>
+						<label class="col-xs-12">
+							Reference
+							<input name="reference">
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

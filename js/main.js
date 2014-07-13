@@ -2,10 +2,6 @@ var resume = {
 	bio: {
 		firstName: "",
 		lastName: "",
-		location: {
-			city : ""
-		},
-		summary: "",
 		email: {
 			work: "",
 			personal: ""
@@ -14,12 +10,21 @@ var resume = {
 			work: "",
 			personal: ""
 		},
-		profiles: {
-			github: "",
-			twitter: ""
-		}
+		summary: "",
+		location: {
+			city: "",
+			countryCode: "",
+			state: ""
+		},
+		websites: {},
+		profiles: {}
 	},
-	work: []
+	work: [],
+	education: [],
+	awards: [],
+	publications: [],
+	skills: [],
+	references: []
 };
 
 $(function() {
@@ -150,8 +155,4 @@ $(function() {
 			array.after(clone);
 		}
 	});
-
-	setTimeout(function() {
-		$("#sidebar .header:first").trigger("click");
-	}, 320);
 });

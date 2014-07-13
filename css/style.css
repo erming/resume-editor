@@ -117,6 +117,12 @@ h3 {
 #sidebar .content .row {
 	padding: 15px 20px;
 }
+#sidebar .disabled {
+	opacity: .5;
+}
+#sidebar .disabled input:hover {
+	border-color: #ddd;
+}
 #preview {
 	background: #f4f6f6;
 	bottom: 0;
