@@ -59,7 +59,8 @@ $(function() {
 				var hash = {};
 				self.find("input").each(function() {
 					var self = $(this);
-					hash[self.attr("name")] = self.val();
+					hash[self.attr("name")] = self.hasClass("array") ? self.val().split(",")
+						: self.val();
 				});
 				value = [];
 				value.push(hash);
@@ -93,7 +94,11 @@ $(function() {
 				}
 				for (var i in obj) {
 					for (var ii in obj[i]) {
-						item.find("input[name='" + ii + "']").val(obj[i][ii]);
+						var value = obj[i][ii];
+						item.find("input[name='" + ii + "']").val(
+							$.type(value) == "array" ? value.join(", ")
+								: value
+						);
 					}
 				}
 				return;
@@ -118,7 +123,7 @@ $(function() {
 				var json = JSON.parse(output.val());
 				form.trigger("submit", json);
 			} catch (e) {
-				console.log("json parse error");
+				// ..
 			}
 		}, 200);
 	});
