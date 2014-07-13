@@ -24,50 +24,84 @@ var resume = {
 
 $(function() {
 	var form = $("#form");
-	var inputs = form
-		.find("input")
-		.val("")
-		.on("click", function() {
-			$(this).select();
-		});
-
-	function iterate(obj, name) {
-		var type = $.type(obj);
-		switch (type) {
-		case "object":
-			for (var i in obj) {
-				iterate(obj[i], (name ? name + "." : "") + i);
-			}
-			break;
-
-		case "array":
-			// ..
-			break;
-
-		default:
-			inputs.filter("[data-name='" + name + "']").val(obj);
-			break;
-		}
-	}
-
-	$.getJSON("resume.json", function(resume) {
-		iterate(resume);
-		inputs.on("input", update);
-		update();
-	});
+	var inputs = form.find("input").val("");
 
 	function update() {
-		var json = $.extend({}, resume);
-		var flat = flatten(json);
+		// Create a cloned object.
+		var json = $.extend(
+			{},
+			resume
+		);
 
-		for (var i in flat) {
-			var value = form.find("[data-name='" + i + "']").val();
-			set(json, i, value);
-		}
+		(function iterate(obj, key) {
+			if ($.type(obj) == "object") {
+				for (var i in obj) {
+					var k = key ? [key, i].join(".") : i;
+					iterate(obj[i],	k);
+				}
+				return;
+			}
+
+			var value = "";
+			var self = form.find("[data-name='" + key + "']");
+			if (!self.length) {
+				return;
+			}
+
+			if (self.prop("tagName") == "INPUT") {
+				value = self.val();
+			} else {
+				var hash = {};
+				self.find("input").each(function() {
+					var self = $(this);
+					hash[self.attr("name")] = self.val();
+				});
+				value = [];
+				value.push(hash);
+			}
+
+			var keys = key.split(".");
+			(function(obj) {
+				while (keys.length > 1) {
+					obj = obj[keys.shift()];
+				}
+				obj[keys[0]] = value;
+			})(json);
+		})(json);
 
 		output.html(JSON.stringify(json, null, "  "));
 		output.trigger("input");
 	}
+
+	$.getJSON("resume.json", function (json) {
+		(function iterate(obj, key) {
+			if ($.type(obj) == "object") {
+				for (var i in obj) {
+					var k = key ? [key, i].join(".") : i;
+					iterate(obj[i],	k);
+				}
+				return;
+			} else if ($.type(obj) == "array") {
+				var item = form.find("[data-name='" + key + "']").eq(0);
+				if (!item.length) {
+					return;
+				}
+				for (var i in obj) {
+					for (var ii in obj[i]) {
+						item.find("input[name='" + ii + "']").val(obj[i][ii]);
+					}
+				}
+				return;
+			}
+			inputs.each(function() {
+				var self = $(this);
+				if (self.data("name") == key) {
+					self.val(obj);
+				}
+			});
+		})(json);
+		update();
+	});
 
 	var output = $("#output");
 	var timer = null;
@@ -76,11 +110,16 @@ $(function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
 			try {
-				form.trigger("submit", JSON.parse(output.val()));
+				var json = JSON.parse(output.val());
+				form.trigger("submit", json);
 			} catch (e) {
-				// ..
+				console.log("json parse error");
 			}
 		}, 200);
+	});
+
+	form.on("input", "input", function() {
+		update();
 	});
 
 	form.on("submit", function(e, json) {
@@ -99,37 +138,20 @@ $(function() {
 		});
 	});
 
+	form.on("click", "input", function() {
+		$(this).select();
+	});
+
+	form.on("click", ".add", function() {
+		var self = $(this);
+		var array = self.prev(".array");
+		if (array.length) {
+			var clone = array.clone().find("input").val("").end();
+			array.after(clone);
+		}
+	});
+
 	setTimeout(function() {
 		$("#sidebar .header:first").trigger("click");
 	}, 320);
 });
-
-function flatten(obj, name, hash) {
-	name = name || "";
-	hash = hash || {};
-
-	for (var i in obj) {
-		var key = [name, i].filter(String).join(".");
-		var value = obj[i];
-		var type = $.type(value);
-		switch (type) {
-		case "object":
-			flatten(obj[i], key, hash);
-			break;
-
-		default:
-			hash[key] = value;
-			break;
-		}
-	}
-
-	return hash;
-};
-
-function set(obj, name, value) {
-	var k = name.split(".");
-	while (k.length > 1) {
-		obj = obj[k.shift()];
-	}
-	obj[k[0]] = value;
-}
