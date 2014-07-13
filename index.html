@@ -21,6 +21,13 @@
 	<aside id="sidebar">
 		<form id="form" action="">
 		<section>
+			<header class="top">
+				<div class="text-right">
+					<a href="http://jsonresume.org" target="_blank"><strong>JSON</strong> Resume</a>
+				</div>
+			</header>
+		</section>
+		<section>
 			<header class="header collapsed" data-target="#bio" data-toggle="collapse" data-parent="#sidebar">
 				Bio
 			</header>
@@ -28,15 +35,15 @@
 				<div class="row">
 					<label class="col-xs-6">
 						<strong>First Name</strong>
-						<input name="bio.firstName" autofocus>
+						<input data-name="bio.firstName" autofocus>
 					</label>
 					<label class="col-xs-6">
 						<strong>Last Name</strong>
-						<input name="bio.lastName">
+						<input data-name="bio.lastName">
 					</label>
 					<label class="col-xs-12">
 						<strong>Summary</strong>
-						<input name="bio.summary">
+						<input data-name="bio.summary">
 					</label>
 				</div>
 			</div>
@@ -49,7 +56,7 @@
 				<div class="row">
 					<label class="col-xs-12">
 						<strong>City</strong>
-						<input name="bio.location.city">
+						<input data-name="bio.location.city">
 					</label>
 				</div>
 			</div>
@@ -62,11 +69,11 @@
 				<div class="row">
 					<label class="col-xs-12">
 						<strong>Email</strong>
-						<input name="bio.email.personal">
+						<input data-name="bio.email.personal">
 					</label>
 					<label class="col-xs-12">
 						<strong>Phone</strong>
-						<input name="bio.phone.personal">
+						<input data-name="bio.phone.personal">
 					</label>
 				</div>
 			</div>
@@ -79,11 +86,11 @@
 				<div class="row">
 					<label class="col-xs-6">
 						<strong>GitHub</strong>
-						<input name="bio.profiles.github">
+						<input data-name="bio.profiles.github">
 					</label>
 					<label class="col-xs-6">
 						<strong>Twitter</strong>
-						<input name="bio.profiles.twitter">
+						<input data-name="bio.profiles.twitter">
 					</label>
 				</div>
 			</div>
@@ -94,6 +101,32 @@
 			</header>
 			<div id="work" class="collapse content">
 				<div class="row">
+					<div class="array" data-name="work">
+						<label class="col-xs-6">
+							Start date
+							<input name="startDate">
+						</label>
+						<label class="col-xs-6">
+							End date
+							<input name="endDate">
+						</label>
+						<label class="col-xs-12">
+							Position
+							<input name="position">
+						</label>
+						<label class="col-xs-12">
+							Company
+							<input name="company">
+						</label>
+						<label class="col-xs-12">
+							Website
+							<input name="website">
+						</label>
+						<label class="col-xs-12">
+							Summary
+							<input name="summary">
+						</label>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -115,35 +148,6 @@
 				</div>
 			</div>
 		</section>
-
-
-
-		<div class="hidden">
-		<div class="fields">
-			<div class="row">
-				<h3 class="col-xs-12">
-					Bio
-				</h3>
-
-			</div>
-			<div class="row">
-				<h3 class="col-xs-12">
-					Location
-				</h3>
-
-			</div>
-			<div class="row">
-				<h3 class="col-xs-12">
-					Profiles
-				</h3>
-
-				<label class="hidden">
-					<strong>JSON output</strong>
-
-				</label>
-			</div>
-		</div>
-		</div>
 		</form>
 	</aside>
 	<div id="preview">
