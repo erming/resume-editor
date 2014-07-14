@@ -1,35 +1,8 @@
-var resume = {
-	bio: {
-		firstName: "",
-		lastName: "",
-		email: {
-			work: "",
-			personal: ""
-		},
-		phone: {
-			work: "",
-			personal: ""
-		},
-		summary: "",
-		location: {
-			city: "",
-			countryCode: "",
-			state: ""
-		},
-		websites: {},
-		profiles: {}
-	},
-	work: [],
-	education: [],
-	awards: [],
-	publications: [],
-	skills: [],
-	references: []
-};
-
 $(function() {
 	var edit = $("#edit");
 	var inputs = edit.find("input").val("");
+
+	var resume = {};
 
 	function update() {
 		// Create a cloned object.
@@ -79,39 +52,46 @@ $(function() {
 		output.trigger("input");
 	}
 
-	$.getJSON("resume.json", function (json) {
-		(function iterate(obj, key) {
-			if ($.type(obj) == "object") {
-				for (var i in obj) {
-					var k = key ? [key, i].join(".") : i;
-					iterate(obj[i],	k);
-				}
-				return;
-			} else if ($.type(obj) == "array") {
-				var item = edit.find("[data-name='" + key + "']").eq(0);
-				if (!item.length) {
+	function reset() {
+		$.getJSON("resume.json", function (json) {
+			console.log("RESET");
+			(function iterate(obj, key) {
+				if ($.type(obj) == "object") {
+					for (var i in obj) {
+						var k = key ? [key, i].join(".") : i;
+						iterate(obj[i],	k);
+					}
+					return;
+				} else if ($.type(obj) == "array") {
+					var item = edit.find("[data-name='" + key + "']").eq(0);
+					if (!item.length) {
+						return;
+					}
+					for (var i in obj) {
+						for (var ii in obj[i]) {
+							var value = obj[i][ii];
+							item.find("input[name='" + ii + "']").val(
+								$.type(value) == "array" ? value.join(", ")
+									: value
+							);
+						}
+					}
 					return;
 				}
-				for (var i in obj) {
-					for (var ii in obj[i]) {
-						var value = obj[i][ii];
-						item.find("input[name='" + ii + "']").val(
-							$.type(value) == "array" ? value.join(", ")
-								: value
-						);
+				inputs.each(function() {
+					var self = $(this);
+					if (self.data("name") == key) {
+						self.val(obj);
 					}
-				}
-				return;
-			}
-			inputs.each(function() {
-				var self = $(this);
-				if (self.data("name") == key) {
-					self.val(obj);
-				}
-			});
-		})(json);
-		update();
-	});
+				});
+			})(json);
+
+			resume = json;
+			update();
+		});
+	}
+
+	reset();
 
 	var output = $("#output");
 	var timer = null;
@@ -169,5 +149,9 @@ $(function() {
 			var clone = array.clone().find("input").val("").end();
 			array.after(clone);
 		}
+	});
+
+	$("#reset").on("click", function() {
+		reset();
 	});
 });

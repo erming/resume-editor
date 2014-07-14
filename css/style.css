@@ -201,7 +201,6 @@ button {
 
 .button:hover,
 .button:focus,
-.button:active,
 .button.active {
 	border-color: #3072b3;
 	border-bottom-color: #2a65a0;
@@ -232,7 +231,6 @@ button {
 }
 
 .button.danger:hover,
-.button.danger:focus,
 .button.danger:active {
     border-color: #b53f3a;
     border-bottom-color: #a0302a;
