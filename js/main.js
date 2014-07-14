@@ -54,7 +54,6 @@ $(function() {
 
 	function reset() {
 		$.getJSON("resume.json", function (json) {
-			console.log("RESET");
 			(function iterate(obj, key) {
 				if ($.type(obj) == "object") {
 					for (var i in obj) {
@@ -99,12 +98,7 @@ $(function() {
 	output.on("input", function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
-			try {
-				var json = JSON.parse(output.val());
-				edit.trigger("submit", json);
-			} catch (e) {
-				// ..
-			}
+			edit.submit();
 		}, 200);
 	});
 
@@ -112,12 +106,21 @@ $(function() {
 		update();
 	});
 
-	edit.on("submit", function(e, json) {
+	edit.on("submit", function(e) {
 		e.preventDefault();
+
+		var json = "";
+		try {
+			var json = JSON.parse(output.val());
+		} catch (e) {
+			return;
+		}
+
 		var theme = $("#select").val().toLowerCase();
 		var data = JSON.stringify({
 			resume: json
 		});
+
 		$.ajax({
 			type: "POST",
 			contentType: "application/json",
@@ -134,12 +137,7 @@ $(function() {
 	});
 
 	edit.on("change", "select", function() {
-		try {
-			var json = JSON.parse(output.val());
-			edit.trigger("submit", json);
-		} catch (e) {
-			// ..
-		}
+		edit.submit();
 	});
 
 	edit.on("click", ".add", function() {

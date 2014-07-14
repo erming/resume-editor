@@ -200,7 +200,6 @@ button {
 }
 
 .button:hover,
-.button:focus,
 .button.active {
 	border-color: #3072b3;
 	border-bottom-color: #2a65a0;
