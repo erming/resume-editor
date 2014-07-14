@@ -28,8 +28,8 @@ var resume = {
 };
 
 $(function() {
-	var form = $("#form");
-	var inputs = form.find("input").val("");
+	var edit = $("#edit");
+	var inputs = edit.find("input").val("");
 
 	function update() {
 		// Create a cloned object.
@@ -48,7 +48,7 @@ $(function() {
 			}
 
 			var value = "";
-			var self = form.find("[data-name='" + key + "']");
+			var self = edit.find("[data-name='" + key + "']");
 			if (!self.length) {
 				return;
 			}
@@ -88,7 +88,7 @@ $(function() {
 				}
 				return;
 			} else if ($.type(obj) == "array") {
-				var item = form.find("[data-name='" + key + "']").eq(0);
+				var item = edit.find("[data-name='" + key + "']").eq(0);
 				if (!item.length) {
 					return;
 				}
@@ -121,19 +121,20 @@ $(function() {
 		timer = setTimeout(function() {
 			try {
 				var json = JSON.parse(output.val());
-				form.trigger("submit", json);
+				edit.trigger("submit", json);
 			} catch (e) {
 				// ..
 			}
 		}, 200);
 	});
 
-	form.on("input", "input", function() {
+	edit.on("input", "input", function() {
 		update();
 	});
 
-	form.on("submit", function(e, json) {
+	edit.on("submit", function(e, json) {
 		e.preventDefault();
+		var theme = $("#select").val().toLowerCase();
 		var data = JSON.stringify({
 			resume: json
 		});
@@ -141,18 +142,27 @@ $(function() {
 			type: "POST",
 			contentType: "application/json",
 			data: data,
-			url: "http://themes.jsonresume.org/theme/flat",
+			url: "http://themes.jsonresume.org/theme/" + theme,
 			success: function(html) {
 				$("#iframe").contents().find("body").html(html);
 			}
 		});
 	});
 
-	form.on("click", "input", function() {
+	edit.on("click", "input", function() {
 		$(this).select();
 	});
 
-	form.on("click", ".add", function() {
+	edit.on("change", "select", function() {
+		try {
+			var json = JSON.parse(output.val());
+			edit.trigger("submit", json);
+		} catch (e) {
+			// ..
+		}
+	});
+
+	edit.on("click", ".add", function() {
 		var self = $(this);
 		var array = self.prev(".array");
 		if (array.length) {

@@ -19,14 +19,22 @@
 	<textarea id="output" style="display: none;"></textarea>
 
 	<aside id="sidebar">
-		<form id="form" action="">
-		<section>
-			<header class="top">
-				<div class="text-right">
-					<a href="http://jsonresume.org" target="_blank"><strong>JSON</strong> Resume</a>
-				</div>
-			</header>
-		</section>
+		<form id="edit" action="">
+		<div class="edit">
+			<button id="save" class="button">Publish</button>
+			<button id="cancel" class="danger button">Reset</button>
+		</div>
+		<div class="preview">
+			Theme:
+			<div class="select">
+				<select id="select">
+					<option>Elegant</option>
+					<option selected>Flat</option>
+					<option>Light</option>
+					<option>Modern</option>
+				</select>
+			</div>
+		</div>
 		<section>
 			<header class="header collapsed" data-target="#bio" data-toggle="collapse" data-parent="#sidebar">
 				Bio
@@ -223,6 +231,11 @@
 			</div>
 		</section>
 		</form>
+		<footer id="footer">
+			<a href="http://jsonresume.org/">
+				<strong>JSON</strong> Resume
+			</a>
+		</footer>
 	</aside>
 	<div id="preview">
 		<iframe id="iframe"></iframe>
