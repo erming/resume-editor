@@ -21,7 +21,10 @@
 	<aside id="sidebar">
 		<form id="edit" action="">
 		<div class="edit">
-			<button id="save" class="button">Publish</button>
+			<div class="button-group">
+				<button id="export" class="button">..</button>
+				<button id="save" class="button">Publish</button>
+			</div>
 			<button id="reset" class="danger button">Reset</button>
 		</div>
 		<div class="preview">
@@ -238,6 +241,7 @@
 		</footer>
 	</aside>
 	<div id="preview">
+		<div id="overlay"></div>
 		<iframe id="iframe"></iframe>
 	</div>
 
