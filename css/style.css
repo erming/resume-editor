@@ -32,30 +32,14 @@ button {
 .row {
 	margin: 0 -10px;
 }
-#navbar {
-	background: #fff;
-	border-bottom: 1px solid #bdc3c7;
-	height: 50px;
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-#navbar .logo {
-	color: #bbb;
-	line-height: 48px;
-	margin-right: 20px;
-	float: right;
-}
 #sidebar {
 	background: #f5f5f5;
-	border-right: 1px solid #bdc3c7;
 	bottom: 0;
 	left: -0;
-	overflow-x: hidden;
 	position: absolute;
 	top: 0;
 	width: 280px;
+	z-index: 1;
 }
 #sidebar label {
 	margin: 2px 0 10px 0;
@@ -90,7 +74,7 @@ button {
 }
 #sidebar .preview {
 	background: #fff;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #ddd;
 	padding: 20px 15px 25px;
 }
 #sidebar .select select {
@@ -149,8 +133,11 @@ button {
 #footer a:hover {
 	color: #222;
 }
+#sidebar.ui-resizable-resizing + #preview iframe {
+	pointer-events: none;
+}
 #preview {
-	background: #f4f6f6;
+	background: #fff;
 	bottom: 0;
 	left: 280px;
 	overflow: hidden;
@@ -165,10 +152,32 @@ button {
 	width: 100%;
 }
 
-/**
- * CSS3 GitHub Buttons
- * https://github.com/necolas/css3-github-buttons
- */
+.ui-resizable {
+	position: relative;
+}
+.ui-resizable-handle {
+	position: absolute;
+	font-size: 0.1px;
+	display: block;
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+	display: none;
+}
+.ui-resizable-e {
+	border-right: 3px solid rgba(0, 0, 0, .03);
+	box-shadow: 1px 0 #ccc;
+	cursor: col-resize;
+	width: 8px;
+	right: 0px;
+	top: 0;
+	height: 100%;
+}
+.ui-resizable-e:hover {
+	box-shadow: 1px 0 #aaa;
+}
 
 .button {
 	position: relative;
@@ -198,9 +207,7 @@ button {
 	zoom: 1;
 	*display: inline;
 }
-
-.button:hover,
-.button.active {
+.button:hover {
 	border-color: #3072b3;
 	border-bottom-color: #2a65a0;
 	text-decoration: none;
@@ -212,9 +219,7 @@ button {
 	background-image: -o-linear-gradient(#599bdc, #3072b3);
 	background-image: linear-gradient(#599bdc, #3072b3);
 }
-
-.button:active,
-.button.active {
+.button:active {
 	border-color: #2a65a0;
 	border-bottom-color: #3884cd;
 	background-color: #3072b3;
@@ -224,11 +229,9 @@ button {
 	background-image: -o-linear-gradient(#3072b3, #599bdc);
 	background-image: linear-gradient(#3072b3, #599bdc);
 }
-
 .button.danger {
     color: #900;
 }
-
 .button.danger:hover,
 .button.danger:active {
     border-color: #b53f3a;
@@ -241,20 +244,6 @@ button {
     background-image: -o-linear-gradient(#dc5f59, #b33630);
     background-image: linear-gradient(#dc5f59, #b33630);
 }
-
-.button.danger:active,
-.button.danger.active {
-    border-color: #a0302a;
-    border-bottom-color: #bf4843;
-    background-color: #b33630;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b33630), to(#dc5f59));
-    background-image: -moz-linear-gradient(#b33630, #dc5f59);
-    background-image: -ms-linear-gradient(#b33630, #dc5f59);
-    background-image: -o-linear-gradient(#b33630, #dc5f59);
-    background-image: linear-gradient(#b33630, #dc5f59);
-}
-
-/* overrides extra padding on button elements in Firefox */
 .button::-moz-focus-inner {
 	padding: 0;
 	border: 0;

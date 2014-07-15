@@ -152,4 +152,15 @@ $(function() {
 	$("#reset").on("click", function() {
 		reset();
 	});
+
+	var preview = $("#preview");
+	$("#sidebar").resizable({
+		handles: "e",
+		minWidth: 200,
+		maxWidth: 800
+	}).on("resize", function(e, ui) {
+		preview.css({
+			left: ui.size.width
+		});
+	});
 });
