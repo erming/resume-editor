@@ -69,11 +69,12 @@ button {
 	height: 51px;
 	padding: 12px 15px 0;
 }
-#sidebar .edit .button-group {
-	float: right;
+#sidebar .edit #export + .button {
+	margin-left: 5px;
 }
-#sidebar .edit #reset {
-	margin-left: 0;
+#sidebar .edit #export:before {
+	content: "\f019";
+	font: 12px FontAwesome;
 }
 #sidebar .preview {
 	background: #fff;
@@ -111,9 +112,9 @@ button {
 	color: #666;
 }
 #sidebar .header:before {
-	content: "\f0aa";
+	content: "\f0d8";
 	color: #888;
-	font: 11px Octicons;
+	font: 11px FontAwesome;
 	position: absolute;
 	margin-top: 4px;
 	right: 20px;
@@ -122,7 +123,7 @@ button {
 	background: #fff;
 }
 #sidebar .collapsed:before {
-	content: "\f05b";
+	content: "\f0d7";
 	color: #ccc;
 }
 #sidebar .content .row {

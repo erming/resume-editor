@@ -13,5 +13,5 @@ A list of things that should be implemented shortly:
 
 - [ ] Preloader
 - [ ] JSON export
-- [ ] Resizable sidebar
+- [x] Resizable sidebar
 - [ ] "Add" buttons
