@@ -101,6 +101,10 @@ $(function() {
 			sidebar.trigger("output");
 		}, 200);
 	});
+	
+	$("#export, #save").tooltip({
+		container: "body"
+	});
 
 	sidebar.on("input", "input", function() {
 		update();
