@@ -34,6 +34,7 @@ button {
 }
 #sidebar {
 	background: #f5f5f5;
+	border-right: 1px solid #ccc;
 	bottom: 0;
 	left: -0;
 	position: absolute;
@@ -178,15 +179,15 @@ button {
 	display: none;
 }
 .ui-resizable-e {
-	box-shadow: 1px 0 #ccc;
 	cursor: col-resize;
-	width: 8px;
-	right: 0px;
+	width: 7px;
+	right: -4px;
 	top: 0;
 	height: 100%;
+	position: absolute;
 }
 .ui-resizable-e:hover {
-	box-shadow: 1px 0 #aaa;
+	background: rgba(0, 0, 0, .05);
 }
 
 .button {

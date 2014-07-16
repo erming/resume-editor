@@ -1,6 +1,6 @@
 $(function() {
-	var edit = $("#edit");
-	var inputs = edit.find("input").val("");
+	var sidebar = $("#sidebar");
+	var inputs = sidebar.find("input").val("");
 
 	var resume = {};
 
@@ -21,7 +21,7 @@ $(function() {
 			}
 
 			var value = "";
-			var self = edit.find("[data-name='" + key + "']");
+			var self = sidebar.find("[data-name='" + key + "']");
 			if (!self.length) {
 				return;
 			}
@@ -62,7 +62,7 @@ $(function() {
 					}
 					return;
 				} else if ($.type(obj) == "array") {
-					var item = edit.find("[data-name='" + key + "']").eq(0);
+					var item = sidebar.find("[data-name='" + key + "']").eq(0);
 					if (!item.length) {
 						return;
 					}
@@ -98,15 +98,15 @@ $(function() {
 	output.on("input", function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
-			edit.submit();
+			sidebar.trigger("output");
 		}, 200);
 	});
 
-	edit.on("input", "input", function() {
+	sidebar.on("input", "input", function() {
 		update();
 	});
 
-	edit.on("submit", function(e) {
+	sidebar.on("output", function(e) {
 		e.preventDefault();
 
 		var json = "";
@@ -132,15 +132,15 @@ $(function() {
 		});
 	});
 
-	edit.on("click", "input", function() {
+	sidebar.on("click", "input", function() {
 		$(this).select();
 	});
 
-	edit.on("change", "select", function() {
-		edit.submit();
+	sidebar.on("change", "select", function() {
+		sidebar.trigger("output");
 	});
 
-	edit.on("click", ".add", function() {
+	sidebar.on("click", ".add", function() {
 		var self = $(this);
 		var array = self.prev(".array");
 		if (array.length) {
