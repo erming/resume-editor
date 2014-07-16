@@ -5,7 +5,7 @@ $(function() {
 	var resume = {};
 
 	function update() {
-		// Create a cloned object.
+		// Clone resume object.
 		var json = $.extend(
 			{},
 			resume
@@ -86,6 +86,13 @@ $(function() {
 			})(json);
 
 			resume = json;
+			
+			var hash = window.location.hash;
+			if (hash != "") {
+				var theme = sidebar.find(".dropdown a[href='" + hash + "']");
+				theme.trigger("click");
+			}
+			
 			update();
 		});
 	}
@@ -112,15 +119,16 @@ $(function() {
 
 	sidebar.on("output", function(e) {
 		e.preventDefault();
-
+		
 		var json = "";
 		try {
 			var json = JSON.parse(output.val());
 		} catch (e) {
+			console.log(output.val());
 			return;
 		}
-
-		var theme = $("#select").val().toLowerCase();
+		
+		var theme = sidebar.find(".dropdown").data("selected") || "flat";
 		var data = JSON.stringify({
 			resume: json
 		});
@@ -140,7 +148,9 @@ $(function() {
 		$(this).select();
 	});
 
-	sidebar.on("change", "select", function() {
+	sidebar.on("click", ".dropdown a", function() {
+		var theme = $(this).attr("href").substring(1);
+		sidebar.find(".dropdown").data("selected", theme).find("button").html(theme);
 		sidebar.trigger("output");
 	});
 
@@ -156,7 +166,7 @@ $(function() {
 	$("#reset").on("click", function() {
 		reset();
 	});
-
+	
 	var preview = $("#preview");
 	$("#sidebar").resizable({
 		handles: "e",

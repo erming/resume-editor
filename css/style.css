@@ -77,18 +77,43 @@ button {
 	content: "\f019";
 	font: 12px FontAwesome;
 }
-#sidebar .preview {
+#sidebar .theme {
 	background: #fff;
 	border-bottom: 1px solid #ddd;
 	padding: 20px 15px 25px;
 }
-#sidebar .select select {
-	background: #fff;
-	border: 1px solid #eee;
-	outline: 0;
+#sidebar .theme .dropdown button {
+	border: 1px solid #ccc;
+	border-radius: 0px;
 	margin-top: 5px;
-	padding: 8px 6px;
+	text-align: left;
+	padding: 5px 10px;
+	text-transform: capitalize;
 	width: 100%;
+}
+#sidebar .theme .dropdown button:hover {
+	background: #f9f9f9;
+}
+#sidebar .theme .dropdown button:before {
+	content: "\f0d7";
+	color: #666;
+	font: 11px FontAwesome;
+	float: right;
+	position: absolute;
+	margin: 5px 15px 0 0;
+	right: 0;
+}
+#sidebar .theme .dropdown-menu {
+	border-radius: 0px;
+	width: 100%;
+	text-transform: capitalize;
+}
+#sidebar .theme .dropdown-menu .version {
+	float: right;
+	font-family: monospace;
+	font-size: 11px;
+	line-height: 21px;
+	color: #999;
 }
 #sidebar .header,
 #sidebar .content {
