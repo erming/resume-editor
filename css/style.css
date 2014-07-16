@@ -26,9 +26,6 @@ button {
 	background: none;
 	border: 0;
 }
-.container {
-	max-width: 420px;
-}
 .row {
 	margin: 0 -10px;
 }
@@ -42,11 +39,16 @@ button {
 	width: 280px;
 	z-index: 1;
 }
-#sidebar label {
+#edit {
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#edit label {
 	margin: 2px 0 10px 0;
 }
-#sidebar input,
-#sidebar textarea {
+#edit input,
+#edit textarea {
 	border: 1px solid #ddd;
 	border-radius: 1px;
 	font-size: 13px;
@@ -57,32 +59,32 @@ button {
 	transition: border-color .2s;
 	width: 100%;
 }
-#sidebar input:hover,
-#sidebar input:focus {
+#edit input:hover,
+#edit input:focus {
 	border-color: #888;
 }
-#sidebar [class*='col-xs-'] {
+#edit [class*='col-xs-'] {
 	padding: 0 10px;
 }
-#sidebar .edit {
+#edit .actions {
 	background: #f5f5f5;
 	border-bottom: 1px solid #ddd;
 	height: 51px;
 	padding: 12px 15px 0;
 }
-#sidebar .edit #export + .button {
+#edit .actions #export + .button {
 	margin-left: 5px;
 }
-#sidebar .edit #export:before {
+#edit .actions #export:before {
 	content: "\f019";
 	font: 12px FontAwesome;
 }
-#sidebar .theme {
+#edit .theme {
 	background: #fff;
 	border-bottom: 1px solid #ddd;
 	padding: 20px 15px 25px;
 }
-#sidebar .theme .dropdown button {
+#edit .theme .dropdown button {
 	border: 1px solid #ccc;
 	border-radius: 0px;
 	margin-top: 5px;
@@ -91,10 +93,10 @@ button {
 	text-transform: capitalize;
 	width: 100%;
 }
-#sidebar .theme .dropdown button:hover {
+#edit .theme .dropdown button:hover {
 	background: #f9f9f9;
 }
-#sidebar .theme .dropdown button:before {
+#edit .theme .dropdown button:before {
 	content: "\f0d7";
 	color: #666;
 	font: 11px FontAwesome;
@@ -103,24 +105,24 @@ button {
 	margin: 5px 15px 0 0;
 	right: 0;
 }
-#sidebar .theme .dropdown-menu {
+#edit .theme .dropdown-menu {
 	border-radius: 0px;
 	width: 100%;
 	text-transform: capitalize;
 }
-#sidebar .theme .dropdown-menu .version {
+#edit .theme .dropdown-menu .version {
 	float: right;
 	font-family: monospace;
 	font-size: 11px;
 	line-height: 21px;
 	color: #999;
 }
-#sidebar .header,
-#sidebar .content {
+#edit .header,
+#edit .content {
 	background: #fff;
 	border-bottom: 1px solid #ddd;
 }
-#sidebar .header {
+#edit .header {
 	background: #eee;
 	font-size: 14px;
 	cursor: pointer;
@@ -131,13 +133,13 @@ button {
 	    -ms-user-select: none;
 	        user-select: none;
 }
-#sidebar .header:hover {
+#edit .header:hover {
 	background: #eee;
 }
-#sidebar .header:hover:before {
+#edit .header:hover:before {
 	color: #666;
 }
-#sidebar .header:before {
+#edit .header:before {
 	content: "\f0d8";
 	color: #888;
 	font: 11px FontAwesome;
@@ -145,20 +147,20 @@ button {
 	margin-top: 4px;
 	right: 20px;
 }
-#sidebar .collapsed {
+#edit .collapsed {
 	background: #fff;
 }
-#sidebar .collapsed:before {
+#edit .collapsed:before {
 	content: "\f0d7";
 	color: #ccc;
 }
-#sidebar .content .row {
+#edit .content .row {
 	padding: 15px 20px;
 }
 #footer {
 	color: #aaa;
 	text-align: center;
-	margin-top: 30px;
+	margin: 30px 0;
 }
 #footer a:hover {
 	color: #222;
@@ -205,8 +207,8 @@ button {
 }
 .ui-resizable-e {
 	cursor: col-resize;
-	width: 7px;
-	right: -4px;
+	width: 5px;
+	right: 0px;
 	top: 0;
 	height: 100%;
 	position: absolute;
@@ -283,43 +285,4 @@ button {
 .button::-moz-focus-inner {
 	padding: 0;
 	border: 0;
-}
-.button-group {
-	display: inline-block;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	/* IE hacks */
-	zoom: 1;
-	*display: inline;
-}
-.button + .button,
-.button + .button-group,
-.button-group + .button,
-.button-group + .button-group {
-	margin-left: 15px;
-}
-.button-group li {
-	float: left;
-	padding: 0;
-	margin: 0;
-}
-.button-group .button {
-	float: left;
-	margin-left: -1px;
-}
-.button-group > .button:not(:first-child):not(:last-child),
-.button-group li:not(:first-child):not(:last-child) .button {
-	border-radius: 0;
-}
-.button-group > .button:first-child,
-.button-group li:first-child .button {
-	margin-left: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.button-group > .button:last-child,
-.button-group li:last-child > .button {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
 }

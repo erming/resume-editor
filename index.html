@@ -19,247 +19,249 @@
 	<textarea id="output" style="display: none;"></textarea>
 
 	<aside id="sidebar">
-		<div class="edit">
-			<div class="pull-right">
-				<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
-				<button id="save" class="button" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
+		<div id="edit">
+			<div class="actions">
+				<div class="pull-right">
+					<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
+					<button id="save" class="button" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
+				</div>
+				<button id="reset" class="danger button">Reset</button>
 			</div>
-			<button id="reset" class="danger button">Reset</button>
+			<div class="theme">
+				Select theme:
+				<div class="dropdown">
+					<button class="dropdown-toggle" data-toggle="dropdown">
+						Dropdown
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#elegant">
+								Elegant
+								<div class="version">0.0.3</div>
+							</a>
+						</li>
+						<li>
+							<a href="#flat">
+								Flat
+								<div class="version">0.2.1</div>
+							</a>
+						</li>
+						<li>
+							<a href="#light">
+								Light
+								<div class="version">0.0.5</div>
+							</a>
+						</li>
+						<li>
+							<a href="#modern">
+								Modern
+								<div class="version">0.0.16</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<section class="panel">
+				<header class="header collapsed" data-target="#bio" data-toggle="collapse" data-parent="#edit">
+					Bio
+				</header>
+				<div id="bio" class="collapse content">
+					<div class="row">
+						<label class="col-xs-6">
+							<strong>First Name</strong>
+							<input data-name="bio.firstName" autofocus>
+						</label>
+						<label class="col-xs-6">
+							<strong>Last Name</strong>
+							<input data-name="bio.lastName">
+						</label>
+						<label class="col-xs-12">
+							<strong>Summary</strong>
+							<input data-name="bio.summary">
+						</label>
+						<label class="col-xs-12">
+							<strong>City</strong>
+							<input data-name="bio.location.city">
+						</label>
+						<label class="col-xs-12">
+							<strong>Email</strong>
+							<input data-name="bio.email.personal">
+						</label>
+						<label class="col-xs-12">
+							<strong>Phone</strong>
+							<input data-name="bio.phone.personal">
+						</label>
+					</div>
+				</div>
+			</section>
+			<section class="panel">
+				<header class="header collapsed" data-target="#work" data-toggle="collapse" data-parent="#edit">
+					Work
+				</header>
+				<div id="work" class="collapse content">
+					<div class="row">
+						<div class="array" data-name="work">
+							<label class="col-xs-12">
+								Company
+								<input name="company">
+							</label>
+							<label class="col-xs-12">
+								Position
+								<input name="position">
+							</label>
+							<label class="col-xs-6">
+								Start date
+								<input name="startDate">
+							</label>
+							<label class="col-xs-6">
+								End date
+								<input name="endDate">
+							</label>
+							<label class="col-xs-12">
+								Website
+								<input name="website">
+							</label>
+							<label class="col-xs-12">
+								Summary
+								<input name="summary">
+							</label>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel">
+				<header class="header collapsed" data-target="#education" data-toggle="collapse" data-parent="#edit">
+					Education
+				</header>
+				<div id="education" class="collapse content">
+					<div class="row">
+						<div class="array" data-name="education">
+							<label class="col-xs-12">
+								Institution
+								<input name="institution">
+							</label>
+							<label class="col-xs-6">
+								Start date
+								<input name="startDate">
+							</label>
+							<label class="col-xs-6">
+								End date
+								<input name="endDate">
+							</label>
+							<label class="col-xs-12">
+								Area
+								<input name="area">
+							</label>
+							<label class="col-xs-12">
+								Study Type
+								<input name="studyType">
+							</label>
+							<label class="col-xs-12">
+								Courses
+								<input name="courses" class="array">
+							</label>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel">
+				<header class="header collapsed" data-target="#awards" data-toggle="collapse" data-parent="#edit">
+					Awards
+				</header>
+				<div id="awards" class="collapse content">
+					<div class="row">
+						<div class="array" data-name="awards">
+							<label class="col-xs-12">
+								Title
+								<input name="title">
+							</label>
+							<label class="col-xs-6">
+								Date
+								<input name="date">
+							</label>
+							<label class="col-xs-6">
+								Awarder
+								<input name="awarder">
+							</label>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel">
+				<header class="header collapsed" data-target="#publications" data-toggle="collapse" data-parent="#edit">
+					Publications
+				</header>
+				<div id="publications" class="collapse content">
+					<div class="row">
+						<div class="array" data-name="publications">
+							<label class="col-xs-12">
+								Name
+								<input name="name">
+							</label>
+							<label class="col-xs-6">
+								Publisher
+								<input name="publisher">
+							</label>
+							<label class="col-xs-6">
+								Date
+								<input name="releaseDate">
+							</label>
+							<label class="col-xs-12">
+								Website
+								<input name="website">
+							</label>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel">
+				<header class="header collapsed" data-target="#skills" data-toggle="collapse" data-parent="#edit">
+					Skills
+				</header>
+				<div id="skills" class="collapse content">
+					<div class="row">
+						<div class="array" data-name="skills">
+							<label class="col-xs-12">
+								Name
+								<input name="name">
+							</label>
+							<label class="col-xs-12">
+								Level
+								<input name="level">
+							</label>
+							<label class="col-xs-12">
+								Keywords
+								<input name="keywords" class="array">
+							</label>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel">
+				<header class="header collapsed" data-target="#references" data-toggle="collapse" data-parent="#edit">
+					References
+				</header>
+				<div id="references" class="collapse content">
+					<div class="row">
+						<div class="array" data-name="references">
+							<label class="col-xs-12">
+								Name
+								<input name="name">
+							</label>
+							<label class="col-xs-12">
+								Reference
+								<input name="reference">
+							</label>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer id="footer">
+				<a href="http://jsonresume.org/" target="_blank">
+					<strong>JSON</strong> Resume
+				</a>
+			</footer>
 		</div>
-		<div class="theme">
-		Select theme:
-		<div class="dropdown">
-			<button class="dropdown-toggle" data-toggle="dropdown">
-				Dropdown
-			</button>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="#elegant">
-						Elegant
-						<div class="version">0.0.3</div>
-					</a>
-				</li>
-				<li>
-					<a href="#flat">
-						Flat
-						<div class="version">0.2.1</div>
-					</a>
-				</li>
-				<li>
-					<a href="#light">
-						Light
-						<div class="version">0.0.5</div>
-					</a>
-				</li>
-				<li>
-					<a href="#modern">
-						Modern
-						<div class="version">0.0.16</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		</div>
-		<section class="panel">
-			<header class="header collapsed" data-target="#bio" data-toggle="collapse" data-parent="#sidebar">
-				Bio
-			</header>
-			<div id="bio" class="collapse content">
-				<div class="row">
-					<label class="col-xs-6">
-						<strong>First Name</strong>
-						<input data-name="bio.firstName" autofocus>
-					</label>
-					<label class="col-xs-6">
-						<strong>Last Name</strong>
-						<input data-name="bio.lastName">
-					</label>
-					<label class="col-xs-12">
-						<strong>Summary</strong>
-						<input data-name="bio.summary">
-					</label>
-					<label class="col-xs-12">
-						<strong>City</strong>
-						<input data-name="bio.location.city">
-					</label>
-					<label class="col-xs-12">
-						<strong>Email</strong>
-						<input data-name="bio.email.personal">
-					</label>
-					<label class="col-xs-12">
-						<strong>Phone</strong>
-						<input data-name="bio.phone.personal">
-					</label>
-				</div>
-			</div>
-		</section>
-		<section class="panel">
-			<header class="header collapsed" data-target="#work" data-toggle="collapse" data-parent="#sidebar">
-				Work
-			</header>
-			<div id="work" class="collapse content">
-				<div class="row">
-					<div class="array" data-name="work">
-						<label class="col-xs-12">
-							Company
-							<input name="company">
-						</label>
-						<label class="col-xs-12">
-							Position
-							<input name="position">
-						</label>
-						<label class="col-xs-6">
-							Start date
-							<input name="startDate">
-						</label>
-						<label class="col-xs-6">
-							End date
-							<input name="endDate">
-						</label>
-						<label class="col-xs-12">
-							Website
-							<input name="website">
-						</label>
-						<label class="col-xs-12">
-							Summary
-							<input name="summary">
-						</label>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel">
-			<header class="header collapsed" data-target="#education" data-toggle="collapse" data-parent="#sidebar">
-				Education
-			</header>
-			<div id="education" class="collapse content">
-				<div class="row">
-					<div class="array" data-name="education">
-						<label class="col-xs-12">
-							Institution
-							<input name="institution">
-						</label>
-						<label class="col-xs-6">
-							Start date
-							<input name="startDate">
-						</label>
-						<label class="col-xs-6">
-							End date
-							<input name="endDate">
-						</label>
-						<label class="col-xs-12">
-							Area
-							<input name="area">
-						</label>
-						<label class="col-xs-12">
-							Study Type
-							<input name="studyType">
-						</label>
-						<label class="col-xs-12">
-							Courses
-							<input name="courses" class="array">
-						</label>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel">
-			<header class="header collapsed" data-target="#awards" data-toggle="collapse" data-parent="#sidebar">
-				Awards
-			</header>
-			<div id="awards" class="collapse content">
-				<div class="row">
-					<div class="array" data-name="awards">
-						<label class="col-xs-12">
-							Title
-							<input name="title">
-						</label>
-						<label class="col-xs-6">
-							Date
-							<input name="date">
-						</label>
-						<label class="col-xs-6">
-							Awarder
-							<input name="awarder">
-						</label>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel">
-			<header class="header collapsed" data-target="#publications" data-toggle="collapse" data-parent="#sidebar">
-				Publications
-			</header>
-			<div id="publications" class="collapse content">
-				<div class="row">
-					<div class="array" data-name="publications">
-						<label class="col-xs-12">
-							Name
-							<input name="name">
-						</label>
-						<label class="col-xs-6">
-							Publisher
-							<input name="publisher">
-						</label>
-						<label class="col-xs-6">
-							Release date
-							<input name="releaseDate">
-						</label>
-						<label class="col-xs-12">
-							Website
-							<input name="website">
-						</label>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section>
-			<header class="header collapsed" data-target="#skills" data-toggle="collapse" data-parent="#sidebar">
-				Skills
-			</header>
-			<div id="skills" class="collapse content">
-				<div class="row">
-					<div class="array" data-name="skills">
-						<label class="col-xs-12">
-							Name
-							<input name="name">
-						</label>
-						<label class="col-xs-12">
-							Level
-							<input name="level">
-						</label>
-						<label class="col-xs-12">
-							Keywords
-							<input name="keywords" class="array">
-						</label>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="panel">
-			<header class="header collapsed" data-target="#references" data-toggle="collapse" data-parent="#sidebar">
-				References
-			</header>
-			<div id="references" class="collapse content">
-				<div class="row">
-					<div class="array" data-name="references">
-						<label class="col-xs-12">
-							Name
-							<input name="name">
-						</label>
-						<label class="col-xs-12">
-							Reference
-							<input name="reference">
-						</label>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer id="footer">
-			<a href="http://jsonresume.org/" target="_blank">
-				<strong>JSON</strong> Resume
-			</a>
-		</footer>
 	</aside>
 	<div id="preview">
 		<div id="overlay"></div>

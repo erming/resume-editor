@@ -1,6 +1,6 @@
 $(function() {
-	var sidebar = $("#sidebar");
-	var inputs = sidebar.find("input").val("");
+	var edit = $("#edit");
+	var inputs = edit.find("input").val("");
 
 	var resume = {};
 
@@ -21,7 +21,7 @@ $(function() {
 			}
 
 			var value = "";
-			var self = sidebar.find("[data-name='" + key + "']");
+			var self = edit.find("[data-name='" + key + "']");
 			if (!self.length) {
 				return;
 			}
@@ -62,7 +62,7 @@ $(function() {
 					}
 					return;
 				} else if ($.type(obj) == "array") {
-					var item = sidebar.find("[data-name='" + key + "']").eq(0);
+					var item = edit.find("[data-name='" + key + "']").eq(0);
 					if (!item.length) {
 						return;
 					}
@@ -89,7 +89,7 @@ $(function() {
 			
 			var hash = window.location.hash;
 			if (hash != "") {
-				var theme = sidebar.find(".dropdown a[href='" + hash + "']");
+				var theme = edit.find(".dropdown a[href='" + hash + "']");
 				theme.trigger("click");
 			}
 			
@@ -105,7 +105,7 @@ $(function() {
 	output.on("input", function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
-			sidebar.trigger("output");
+			edit.trigger("output");
 		}, 200);
 	});
 	
@@ -113,11 +113,11 @@ $(function() {
 		container: "body"
 	});
 
-	sidebar.on("input", "input", function() {
+	edit.on("input", "input", function() {
 		update();
 	});
 
-	sidebar.on("output", function(e) {
+	edit.on("output", function(e) {
 		e.preventDefault();
 		
 		var json = "";
@@ -128,7 +128,7 @@ $(function() {
 			return;
 		}
 		
-		var theme = sidebar.find(".dropdown").data("selected") || "flat";
+		var theme = edit.find(".dropdown").data("selected") || "flat";
 		var data = JSON.stringify({
 			resume: json
 		});
@@ -144,17 +144,17 @@ $(function() {
 		});
 	});
 
-	sidebar.on("click", "input", function() {
+	edit.on("click", "input", function() {
 		$(this).select();
 	});
 
-	sidebar.on("click", ".dropdown a", function() {
+	edit.on("click", ".dropdown a", function() {
 		var theme = $(this).attr("href").substring(1);
-		sidebar.find(".dropdown").data("selected", theme).find("button").html(theme);
-		sidebar.trigger("output");
+		edit.find(".dropdown").data("selected", theme).find("button").html(theme);
+		edit.trigger("output");
 	});
 
-	sidebar.on("click", ".add", function() {
+	edit.on("click", ".add", function() {
 		var self = $(this);
 		var array = self.prev(".array");
 		if (array.length) {
@@ -164,7 +164,9 @@ $(function() {
 	});
 
 	$("#reset").on("click", function() {
-		reset();
+		if (confirm("Are you sure you want to start over? This action clear the input fields and reload the theme.")) {
+			reset();
+		}
 	});
 	
 	$("#export").on("click", function() {
