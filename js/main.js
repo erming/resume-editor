@@ -29,14 +29,16 @@ $(function() {
 			if (self.prop("tagName") == "INPUT") {
 				value = self.val();
 			} else {
-				var hash = {};
-				self.find("input").each(function() {
-					var self = $(this);
-					hash[self.attr("name")] = self.hasClass("array") ? self.val().split(",")
-						: self.val();
-				});
 				value = [];
-				value.push(hash);
+				self.each(function() {
+					var self = $(this);
+					var hash = {};
+					self.find("input").each(function() {
+						var self = $(this);
+						hash[self.attr("name")] = self.hasClass("list") ? self.val().split(",") : self.val();
+					});
+					value.push(hash);
+				});
 			}
 
 			var keys = key.split(".");
@@ -70,8 +72,7 @@ $(function() {
 						for (var ii in obj[i]) {
 							var value = obj[i][ii];
 							item.find("input[name='" + ii + "']").val(
-								$.type(value) == "array" ? value.join(", ")
-									: value
+								$.type(value) == "array" ? value.join(", ") : value
 							);
 						}
 					}
@@ -162,7 +163,7 @@ $(function() {
 			array.after(clone);
 		}
 	});
-
+	
 	$("#reset").on("click", function() {
 		if (confirm("Are you sure you want to start over? This action clear the input fields and reload the theme.")) {
 			reset();

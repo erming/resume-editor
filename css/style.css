@@ -45,13 +45,13 @@ button {
 	overflow-y: auto;
 }
 #edit label {
-	margin: 2px 0 10px 0;
+	margin-top: 10px;
 }
 #edit input,
 #edit textarea {
 	border: 1px solid #ddd;
-	border-radius: 1px;
-	font-size: 13px;
+	border-radius: 2px;
+	font-size: 12px;
 	margin: 5px 0 0;
 	outline: 0;
 	padding: 6px 8px;
@@ -86,7 +86,7 @@ button {
 }
 #edit .theme .dropdown button {
 	border: 1px solid #ccc;
-	border-radius: 0px;
+	border-radius: 2px;
 	margin-top: 5px;
 	text-align: left;
 	padding: 5px 10px;
@@ -106,7 +106,7 @@ button {
 	right: 0;
 }
 #edit .theme .dropdown-menu {
-	border-radius: 0px;
+	border-radius: 2px;
 	width: 100%;
 	text-transform: capitalize;
 }
@@ -126,7 +126,7 @@ button {
 	background: #eee;
 	font-size: 14px;
 	cursor: pointer;
-	padding: 15px 20px;
+	padding: 12px 20px;
 	position: relative;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -154,8 +154,19 @@ button {
 	content: "\f0d7";
 	color: #ccc;
 }
+#edit .content strong {
+	font-size: 12px;
+}
 #edit .content .row {
 	padding: 15px 20px;
+}
+#edit .content .button {
+	margin-left: 10px;
+}
+#edit .array {
+	margin-bottom: 10px;
+	overflow: hidden;
+	padding-bottom: 10px;
 }
 #footer {
 	color: #aaa;
@@ -207,8 +218,8 @@ button {
 }
 .ui-resizable-e {
 	cursor: col-resize;
-	width: 5px;
-	right: 0px;
+	width: 7px;
+	right: -4px;
 	top: 0;
 	height: 100%;
 	position: absolute;
