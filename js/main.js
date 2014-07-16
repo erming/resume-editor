@@ -167,6 +167,10 @@ $(function() {
 		reset();
 	});
 	
+	$("#export").on("click", function() {
+		download(output.val(), "resume.json", "text/plain");
+	});
+	
 	var preview = $("#preview");
 	$("#sidebar").resizable({
 		handles: "e",
