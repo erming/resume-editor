@@ -12,6 +12,6 @@ http://erming.github.io/resume-edit
 A list of things that should be implemented shortly:
 
 - [ ] Preloader
-- [ ] JSON export
+- [x] JSON export
 - [x] Resizable sidebar
-- [ ] "Add" buttons
+- [x] "Add" buttons
