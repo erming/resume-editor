@@ -36,7 +36,7 @@ button {
 	left: -0;
 	position: absolute;
 	top: 0;
-	width: 280px;
+	width: 260px;
 	z-index: 1;
 }
 #edit {
@@ -45,6 +45,7 @@ button {
 	overflow-y: auto;
 }
 #edit label {
+	font-size: 12px;
 	margin-top: 10px;
 }
 #edit input,
@@ -52,7 +53,7 @@ button {
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	font-size: 12px;
-	margin: 5px 0 0;
+	margin: 2px 0 0;
 	outline: 0;
 	padding: 6px 8px;
 	resize: none;
@@ -158,15 +159,41 @@ button {
 	font-size: 12px;
 }
 #edit .content .row {
-	padding: 15px 20px;
+	padding: 12px 20px;
 }
-#edit .content .button {
-	margin-left: 10px;
-}
-#edit .array {
-	margin-bottom: 10px;
+#edit .array,
+#edit .placeholder {
+	background: #fff;
+	border: 1px solid #d4d4d4;
+	border-radius: 2px;
+	margin: 0 0 10px;
 	overflow: hidden;
+}
+#edit .array .handle {
+	background-color: #ececec;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+	background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+	background-image: linear-gradient(#f4f4f4, #ececec);
+	border-bottom: 1px dashed #solid;
+	cursor: row-resize;
+	padding: 10px 10px;
+	font-size: 11px;
+}
+#edit .array .handle:before {
+	float: right;
+	content: "\f0c9";
+	font: 14px FontAwesome;
+	margin-right: 5px;
+	color: #ccc;
+	text-shadow: 0 1px #fff;
+}
+#edit .array .collapse {
+	display: block;
 	padding-bottom: 10px;
+	overflow: hidden;
+}
+#bio .row {
+	padding: 6px 20px 20px !important;
 }
 #footer {
 	color: #aaa;
@@ -182,7 +209,7 @@ button {
 #preview {
 	background: #fff;
 	bottom: 0;
-	left: 280px;
+	left: 260px;
 	overflow: hidden;
 	position: absolute;
 	right: 0;

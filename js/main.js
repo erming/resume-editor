@@ -87,13 +87,13 @@ $(function() {
 			})(json);
 
 			resume = json;
-			
+
 			var hash = window.location.hash;
 			if (hash != "") {
 				var theme = edit.find(".dropdown a[href='" + hash + "']");
 				theme.trigger("click");
 			}
-			
+
 			update();
 		});
 	}
@@ -109,7 +109,7 @@ $(function() {
 			edit.trigger("output");
 		}, 200);
 	});
-	
+
 	$("#export, #save").tooltip({
 		container: "body"
 	});
@@ -120,7 +120,7 @@ $(function() {
 
 	edit.on("output", function(e) {
 		e.preventDefault();
-		
+
 		var json = "";
 		try {
 			var json = JSON.parse(output.val());
@@ -128,7 +128,7 @@ $(function() {
 			console.log(output.val());
 			return;
 		}
-		
+
 		var theme = edit.find(".dropdown").data("selected") || "flat";
 		var data = JSON.stringify({
 			resume: json
@@ -163,17 +163,31 @@ $(function() {
 			array.after(clone);
 		}
 	});
-	
+
 	$("#reset").on("click", function() {
 		if (confirm("Are you sure you want to start over? This action clear the input fields and reload the theme.")) {
 			reset();
 		}
 	});
-	
+
 	$("#export").on("click", function() {
 		download(output.val(), "resume.json", "text/plain");
 	});
-	
+
+	$(".row").sortable({
+		containment: "parent",
+		items: ".array",
+		handle: ".handle",
+		placeholder: "placeholder",
+		forcePlaceholderSize: true,
+		scroll: false
+	});
+
+	$(".handle").click(function() {
+		var self = $(this);
+		self.next(".collapse").toggle();
+	});
+
 	var preview = $("#preview");
 	$("#sidebar").resizable({
 		handles: "e",
