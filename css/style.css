@@ -46,25 +46,31 @@ button {
 }
 #edit label {
 	font-size: 12px;
-	margin-top: 10px;
+	margin: 0;
+	/*margin-top: 10px;*/
+}
+#edit input.no-border,
+#edit label:last-child input {
+	border: 0;
 }
 #edit input,
 #edit textarea {
-	border: 1px solid #ddd;
-	border-bottom-width: 2px;
-	border-radius: 2px;
+	border: 0;
+	/*border: 1px solid #ddd;*/
+	border-bottom: 1px solid #ddd;
 	font-size: 12px;
 	margin: 2px 0 0;
 	outline: 0;
 	padding: 6px 8px;
+	padding: 6px 0px;
+	padding-top: 25px;
 	resize: none;
 	transition: border-color .2s;
 	width: 100%;
 }
 #edit input:hover,
 #edit input:focus {
-	border: 1px solid #aaa;
-	border-bottom-width: 2px;
+	/*border: 1px solid #aaa;*/
 }
 #edit [class*='col-xs-'] {
 	padding: 0 10px;
@@ -89,7 +95,6 @@ button {
 }
 #edit .theme .dropdown button {
 	border: 1px solid #ddd;
-	border-bottom-width: 2px;
 	border-radius: 2px;
 	margin-top: 5px;
 	text-align: left;
@@ -101,7 +106,6 @@ button {
 #edit .theme .dropdown.open button,
 #edit .theme .dropdown button:hover {
 	border: 1px solid #aaa;
-	border-bottom-width: 2px;
 }
 #edit .theme .dropdown button:before {
 	content: "\f0d7";
@@ -168,7 +172,12 @@ button {
 	color: #ccc;
 }
 #edit .content strong {
+	font-weight: normal;
 	font-size: 12px;
+	position: absolute;
+	color: #999;
+	margin: 9px 8px;
+	margin: 9px 0px;
 }
 #edit .content .row {
 	padding: 12px 10px;
@@ -178,7 +187,7 @@ button {
 	background: #fff;
 	border: 1px solid #d4d4d4;
 	border-radius: 2px;
-	margin: 0 0 10px;
+	margin: 5px 5px 10px;
 	overflow: hidden;
 }
 #edit .array .handle {
@@ -204,8 +213,11 @@ button {
 	padding-bottom: 10px;
 	overflow: hidden;
 }
+#edit .array + .button {
+	margin: 0 5px 5px;
+}
 #bio .row {
-	padding: 5px 5px 20px !important;
+	/*padding: 5px 5px 10px !important;*/
 }
 #footer {
 	color: #aaa;
