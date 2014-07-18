@@ -107,7 +107,7 @@ $(function() {
 		clearTimeout(timer);
 		timer = setTimeout(function() {
 			edit.trigger("output");
-		}, 200);
+		}, 120);
 	});
 
 	$("#export, #save").tooltip({
@@ -174,16 +174,21 @@ $(function() {
 		download(output.val(), "resume.json", "text/plain");
 	});
 
-	$(".row").sortable({
+	var rows = $(".row");
+
+	rows.sortable({
 		containment: "parent",
 		items: ".array",
 		handle: ".handle",
 		placeholder: "placeholder",
 		forcePlaceholderSize: true,
-		scroll: false
+		scroll: false,
+		update: function() {
+			update();
+		}
 	});
 
-	$(".row").on("click", ".handle", function() {
+	rows.on("click", ".handle", function() {
 		var self = $(this);
 		self.next(".collapse").toggle();
 	});
