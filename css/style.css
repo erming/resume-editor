@@ -27,7 +27,7 @@ button {
 	border: 0;
 }
 .row {
-	margin: 0 -10px;
+	margin: 0;
 }
 #sidebar {
 	background: #f5f5f5;
@@ -51,6 +51,7 @@ button {
 #edit input,
 #edit textarea {
 	border: 1px solid #ddd;
+	border-bottom-width: 2px;
 	border-radius: 2px;
 	font-size: 12px;
 	margin: 2px 0 0;
@@ -62,7 +63,8 @@ button {
 }
 #edit input:hover,
 #edit input:focus {
-	border-color: #888;
+	border: 1px solid #aaa;
+	border-bottom-width: 2px;
 }
 #edit [class*='col-xs-'] {
 	padding: 0 10px;
@@ -86,28 +88,38 @@ button {
 	padding: 20px 15px 25px;
 }
 #edit .theme .dropdown button {
-	border: 1px solid #ccc;
+	border: 1px solid #ddd;
+	border-bottom-width: 2px;
 	border-radius: 2px;
 	margin-top: 5px;
 	text-align: left;
 	padding: 5px 10px;
 	text-transform: capitalize;
+	transition: border-color .2s;
 	width: 100%;
 }
+#edit .theme .dropdown.open button,
 #edit .theme .dropdown button:hover {
-	background: #f9f9f9;
+	border: 1px solid #aaa;
+	border-bottom-width: 2px;
 }
 #edit .theme .dropdown button:before {
 	content: "\f0d7";
-	color: #666;
+	color: #ccc;
 	font: 11px FontAwesome;
 	float: right;
 	position: absolute;
 	margin: 5px 15px 0 0;
 	right: 0;
 }
+#edit .theme .dropdown.open button:before,
+#edit .theme .dropdown button:hover:before {
+	color: #888;
+}
 #edit .theme .dropdown-menu {
+	border: 1px solid #aaa;
 	border-radius: 2px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.075);
 	width: 100%;
 	text-transform: capitalize;
 }
@@ -124,7 +136,7 @@ button {
 	border-bottom: 1px solid #ddd;
 }
 #edit .header {
-	background: #eee;
+	background: #f5f5f5;
 	font-size: 14px;
 	cursor: pointer;
 	padding: 12px 20px;
@@ -135,7 +147,7 @@ button {
 	        user-select: none;
 }
 #edit .header:hover {
-	background: #eee;
+	background: #f5f5f5;
 }
 #edit .header:hover:before {
 	color: #666;
@@ -159,7 +171,7 @@ button {
 	font-size: 12px;
 }
 #edit .content .row {
-	padding: 12px 20px;
+	padding: 12px 10px;
 }
 #edit .array,
 #edit .placeholder {
@@ -174,7 +186,6 @@ button {
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
 	background-image: -moz-linear-gradient(#f4f4f4, #ececec);
 	background-image: linear-gradient(#f4f4f4, #ececec);
-	border-bottom: 1px dashed #solid;
 	cursor: row-resize;
 	padding: 10px 10px;
 	font-size: 11px;
@@ -188,12 +199,13 @@ button {
 	text-shadow: 0 1px #fff;
 }
 #edit .array .collapse {
+	border-top: 1px solid #d4d4d4;
 	display: block;
 	padding-bottom: 10px;
 	overflow: hidden;
 }
 #bio .row {
-	padding: 6px 20px 20px !important;
+	padding: 5px 5px 20px !important;
 }
 #footer {
 	color: #aaa;

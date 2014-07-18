@@ -183,7 +183,7 @@ $(function() {
 		scroll: false
 	});
 
-	$(".handle").click(function() {
+	$(".row").on("click", ".handle", function() {
 		var self = $(this);
 		self.next(".collapse").toggle();
 	});
