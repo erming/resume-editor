@@ -190,22 +190,38 @@ button {
 	margin: 5px 5px 10px;
 	overflow: hidden;
 }
-#edit .array .handle {
+#edit .handle {
 	background-color: #ececec;
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
 	background-image: -moz-linear-gradient(#f4f4f4, #ececec);
 	background-image: linear-gradient(#f4f4f4, #ececec);
 	cursor: row-resize;
-	padding: 10px 10px;
 	font-size: 11px;
+	padding: 10px 10px;
+	position: relative;
 }
-#edit .array .handle:before {
+#edit .handle:before {
 	float: right;
 	content: "\f0c9";
 	font: 14px FontAwesome;
 	margin-right: 5px;
-	color: #ccc;
+	color: #ddd;
+	text-align: center;
 	text-shadow: 0 1px #fff;
+	position: absolute;
+	transform: scale(2, 1);
+	width: 93%;
+}
+#edit .handle .button {
+	border: none;
+	color: #ccc;
+	float: right;
+	margin-right: -6px;
+	margin-top: -6px;
+}
+#edit .handle .button:hover {
+	border: inherit;
+	color: #fff;
 }
 #edit .array .collapse {
 	border-top: 1px solid #d4d4d4;
@@ -213,11 +229,8 @@ button {
 	padding-bottom: 10px;
 	overflow: hidden;
 }
-#edit .array + .button {
+#edit .add.button {
 	margin: 0 5px 5px;
-}
-#bio .row {
-	/*padding: 5px 5px 10px !important;*/
 }
 #footer {
 	color: #aaa;
