@@ -90,7 +90,6 @@ button {
 }
 #edit .theme {
 	background: #fff;
-	border-bottom: 1px solid #ddd;
 	padding: 20px 15px 25px;
 }
 #edit .theme .dropdown button {
@@ -137,14 +136,16 @@ button {
 #edit .header,
 #edit .content {
 	background: #fff;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #eee;
 }
 #edit .header {
 	background: #f5f5f5;
+	border-bottom-color: #ccc;
 	font-size: 14px;
 	cursor: pointer;
 	padding: 12px 20px;
 	position: relative;
+	transition: border .3s linear;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	    -ms-user-select: none;
@@ -166,6 +167,7 @@ button {
 }
 #edit .collapsed {
 	background: #fff;
+	border-bottom-color: #eee;
 }
 #edit .collapsed:before {
 	content: "\f0d7";
@@ -233,9 +235,12 @@ button {
 	margin: 0 5px 5px;
 }
 #footer {
+	border-top: 1px solid #ddd;
 	color: #aaa;
 	text-align: center;
-	margin: 30px 0;
+	margin-top: -1px;
+	padding: 30px 0;
+	position: relative;
 }
 #footer a:hover {
 	color: #222;
