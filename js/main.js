@@ -1,3 +1,7 @@
+jq = $;
+// some weird jquery bug, themes overriding or something something
+// screws up .modal calls
+
 $(function() {
 	var edit = $("#edit");
 	var inputs = edit.find("input").val("");
@@ -272,13 +276,11 @@ $(function() {
       	if(session.get('auth')) {
       		$('#logout-button').fadeIn(200);
       		$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
-      		success: function (res) {
-      			var resumeObj = res;
-      			console.log(resumeObj);
-				resetBuilder(resumeObj);
-				update();
-      		}
-      		})
+	      		success: function (res) {
+	      			var resumeObj = res;
+					resetBuilder(resumeObj);
+	      		}
+      		});
       	} else {
       		$('#register-button').fadeIn(200);
       		$('#login-button').fadeIn(200);
@@ -300,7 +302,7 @@ $(function() {
       Session.on('change:auth', function (session) {
       })
       $('#login-button').on('click', function (ev) {
-		$('#login-modal').modal('show');
+		jq('#login-modal').modal('show');
       });
       $('#logout-button').on('click', function (ev) {
       	Session.logout();
@@ -308,6 +310,7 @@ $(function() {
   		$('#logout-button').toggle();
   		$('#register-button').toggle();
   		$('#login-button').toggle();
+  		reset();
 		//$('#login-modal').modal('show');
       });
       $('.login-form').on('submit', function (ev) {
@@ -319,7 +322,14 @@ $(function() {
       		email: email,
       		password: password
       	}, function () {
+      		console.log('a');
 			$('#login-modal').modal('hide');
+			$.ajax('http://registry.jsonresume.org/'+Session.get('username')+'.json', {
+	      		success: function (res) {
+	      			var resumeObj = res;
+					resetBuilder(resumeObj);
+	      		}
+      		});
 
 	  		$('#logout-button').toggle();
 	  		$('#register-button').toggle();
