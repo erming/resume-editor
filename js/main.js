@@ -66,6 +66,8 @@ $(function() {
 					if (!item.length) {
 						return;
 					}
+					var clone = item[0].outerHTML;
+					item.next(".add").data("clone", clone);
 					for (var i in obj) {
 						for (var ii in obj[i]) {
 							var value = obj[i][ii];
@@ -122,7 +124,6 @@ $(function() {
 
 	edit.on("output", function(e) {
 		e.preventDefault();
-
 		var json = "";
 		try {
 			var json = JSON.parse(output.val());
@@ -159,15 +160,20 @@ $(function() {
 
 	edit.on("click", ".add", function() {
 		var self = $(this);
-		var array = self.prev(".array");
-		if (array.length) {
-			var clone = array.clone().find("input").val("").end();
-			array.after(clone);
+		var clone = self.data("clone");
+		if (clone) {
+			self.before(clone);
 		}
 	});
 
+	edit.on("click", ".delete", function() {
+		var self = $(this);
+		self.closest(".array").remove();
+		update();
+	});
+
 	$("#reset").on("click", function() {
-		if (confirm("Are you sure you want to start over? This action clear the input fields and reload the theme.")) {
+		if (confirm("Are you sure you want to start over? This action will clear the input fields and reload the theme.")) {
 			reset();
 		}
 	});
