@@ -53,10 +53,8 @@ $(function() {
 		output.html(JSON.stringify(json, null, "  "));
 		output.trigger("input");
 	}
-
-	function reset() {
-		$.getJSON("resume.json", function (json) {
-			(function iterate(obj, key) {
+	function resetBuilder (resumeObj) {
+		(function iterate(obj, key) {
 				if ($.type(obj) == "object") {
 					for (var i in obj) {
 						var k = key ? [key, i].join(".") : i;
@@ -84,9 +82,9 @@ $(function() {
 						self.val(obj);
 					}
 				});
-			})(json);
+			})(resumeObj);
 
-			resume = json;
+			resume = resumeObj;
 
 			var hash = window.location.hash;
 			if (hash != "") {
@@ -95,6 +93,10 @@ $(function() {
 			}
 
 			update();
+	}
+	function reset() {
+		$.getJSON("resume.json", function (json) {
+			resetBuilder(json);
 		});
 	}
 
@@ -205,7 +207,6 @@ $(function() {
 	});
 
 
-	$('#login-modal').modal('show')
 
 	/* Session */
 	var SessionModel = Backbone.Model.extend({
@@ -219,7 +220,8 @@ $(function() {
           // The server must allow this through response headers
           $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
           	if(options.url.indexOf('session') !== -1) {
-          		options.url = 'http://registry.jsonresume.org/' + options.url;
+          		//options.url = 'http://registry.jsonresume.org/' + options.url;
+          		options.url = 'http://localhost:5000' + options.url;
 	            options.xhrFields = {
 	              withCredentials: true
 	            };
@@ -261,13 +263,43 @@ $(function() {
       }); 
       var Session = new SessionModel();
       Session.getAuth(function (session) {
-      	console.log('auth', session.get('auth'));
+      	console.log('auth', session);
+      	//$.ajax('http://localhost:5000/thomasdavis.json', {
+      	$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
+      		success: function (res) {
+      			var resumeObj = res;
+      			console.log(resumeObj);
+				resetBuilder(resumeObj);
+				update();
+      		}
+      	})
+			//resetBuilder(json);
+
+      });
+      Session.on('change:auth', function (session) {
+      	if(session.get('auth')) {
+      		$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
+      		success: function (res) {
+      			var resumeObj = res;
+      			console.log(resumeObj);
+				resetBuilder(resumeObj);
+				update();
+      		}
+      	})
+      	}
+      })
+      $('#login-button').on('click', function (ev) {
+		$('#login-modal').modal('show');
       });
       $('.login-form').on('submit', function (ev) {
       	var form = $(ev.currentTarget);
       	var email = $('.login-email', form).val();
       	var password = $('.login-password', form).val();
       	console.log(email,password);
+      	Session.login({
+      		email: email,
+      		password: password
+      	});
       	return false;
-      })
+      });
 });
