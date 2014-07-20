@@ -102,7 +102,6 @@ $(function() {
 		});
 	}
 
-	reset();
 
 	var output = $("#output");
 	var timer = null;
@@ -269,6 +268,19 @@ $(function() {
       }); 
       var Session = new SessionModel();
       Session.getAuth(function (session) {
+
+      	if(session.get('auth')) {
+      		$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
+      		success: function (res) {
+      			var resumeObj = res;
+      			console.log(resumeObj);
+				resetBuilder(resumeObj);
+				update();
+      		}
+      		})
+      	} else {
+      		reset();
+      	}
       	//$.ajax('http://localhost:5000/thomasdavis.json', {
       	/*$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
       		success: function (res) {
@@ -282,16 +294,6 @@ $(function() {
 
       });
       Session.on('change:auth', function (session) {
-      	if(session.get('auth')) {
-      		$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
-      		success: function (res) {
-      			var resumeObj = res;
-      			console.log(resumeObj);
-				resetBuilder(resumeObj);
-				update();
-      		}
-      	})
-      	}
       })
       $('#login-button').on('click', function (ev) {
 		$('#login-modal').modal('show');
