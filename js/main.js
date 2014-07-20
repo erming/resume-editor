@@ -237,10 +237,10 @@ $(function() {
 	        }
           });
         },
-        login: function(creds) {
+        login: function(creds, callback) {
           // Do a POST to /session and send the serialized form creds
           this.save(creds, {
-             success: function () {}
+             success: callback
           });
         },
         logout: function() {
@@ -270,6 +270,7 @@ $(function() {
       Session.getAuth(function (session) {
 
       	if(session.get('auth')) {
+      		$('#logout-button').fadeIn(200);
       		$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
       		success: function (res) {
       			var resumeObj = res;
@@ -279,6 +280,9 @@ $(function() {
       		}
       		})
       	} else {
+      		$('#register-button').fadeIn(200);
+      		$('#login-button').fadeIn(200);
+
       		reset();
       	}
       	//$.ajax('http://localhost:5000/thomasdavis.json', {
@@ -298,14 +302,28 @@ $(function() {
       $('#login-button').on('click', function (ev) {
 		$('#login-modal').modal('show');
       });
+      $('#logout-button').on('click', function (ev) {
+      	Session.logout();
+
+  		$('#logout-button').toggle();
+  		$('#register-button').toggle();
+  		$('#login-button').toggle();
+		//$('#login-modal').modal('show');
+      });
       $('.login-form').on('submit', function (ev) {
       	var form = $(ev.currentTarget);
       	var email = $('.login-email', form).val();
       	var password = $('.login-password', form).val();
-      	console.log(email,password);
+
       	Session.login({
       		email: email,
       		password: password
+      	}, function () {
+			$('#login-modal').modal('hide');
+
+	  		$('#logout-button').toggle();
+	  		$('#register-button').toggle();
+	  		$('#login-button').toggle();
       	});
       	return false;
       });
