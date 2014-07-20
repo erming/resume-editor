@@ -226,8 +226,8 @@ $(function() {
           // The server must allow this through response headers
           $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
           	if(options.url.indexOf('session') !== -1) {
-          		//options.url = 'http://registry.jsonresume.org/' + options.url;
-          		options.url = 'http://localhost:5000' + options.url;
+          		options.url = 'http://registry.jsonresume.org/' + options.url;
+          		//options.url = 'http://localhost:5000' + options.url;
 	            options.xhrFields = {
 	              withCredentials: true
 	            };
