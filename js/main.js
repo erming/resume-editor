@@ -269,16 +269,15 @@ $(function() {
       }); 
       var Session = new SessionModel();
       Session.getAuth(function (session) {
-      	console.log('auth', session);
       	//$.ajax('http://localhost:5000/thomasdavis.json', {
-      	$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
+      	/*$.ajax('http://registry.jsonresume.org/'+session.get('username')+'.json', {
       		success: function (res) {
       			var resumeObj = res;
       			console.log(resumeObj);
 				resetBuilder(resumeObj);
 				update();
       		}
-      	})
+      	})*/
 			//resetBuilder(json);
 
       });
