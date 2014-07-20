@@ -25,7 +25,8 @@
 					<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
 					<button id="save" class="button" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
 				</div>
-				<button id="reset" class="danger button">Reset</button>
+				<button id="reset" class="button">Login</button>
+				<button id="reset" class="button">Register</button>
 			</div>
 			<div class="theme">
 				Select theme:
@@ -315,6 +316,7 @@
 				<a href="http://jsonresume.org/" target="_blank">
 					<strong>JSON</strong> Resume
 				</a>
+			
 			</footer>
 		</div>
 	</aside>
@@ -323,11 +325,69 @@
 		<iframe id="iframe"></iframe>
 	</div>
 
+
+	<!-- MODALS -->
+
+	<!-- REGISTER MODAL -->
+		<div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+		  <div class="modal-dialog" style="width: 400px;">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h4 class="modal-title" id="myModalLabel">Register an Account</h4>
+		      </div>
+		      <div class="modal-body">
+		        <input type="text" class="form-control" placeholder="Email" required autofocus><br />
+		        <input type="text" class="form-control" placeholder="Username" required><br />
+                <input type="password" class="form-control" placeholder="Password" required>
+                </form>
+		      </div>
+		      <div class="modal-footer">
+					<button id="reset" class="button">Register</button>
+		        
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	<!-- REGISTER MODAL -->
+
+	<!-- LOGIN MODAL -->
+	<div class="modal " id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+
+	  <div class="modal-dialog" style="width: 400px;">
+	  	<form class="login-form">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel">Login to your Account</h4>
+	      </div>
+	      <div class="modal-body">
+	        <input type="text" class="form-control login-email" value="thomasalwyndavis@gmail.com" placeholder="Email" required autofocus><br />
+            <input type="password" class="form-control login-password" placeholder="Password" value="" required>
+	      </div>
+	      <div class="modal-footer">
+				<button type="submit" id="reset" class="button">Login</button>
+	        
+	      </div>
+           </form>
+
+	    </div>
+	  </div>
+	</div>
+	<!-- LOGIN MODAL -->
+
+	<!-- END MODALS -->
+
+
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
 	<script src="js/util.js"></script>
 	<script src="js/main.js"></script>
 
+
+ 
 	</body>
 </html>

@@ -36,7 +36,7 @@ button {
 	left: -0;
 	position: absolute;
 	top: 0;
-	width: 260px;
+	width: 320px;
 	z-index: 1;
 }
 #edit {
@@ -347,4 +347,10 @@ button {
 .button::-moz-focus-inner {
 	padding: 0;
 	border: 0;
+}
+
+.user-modal label {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
 }
