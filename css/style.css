@@ -26,6 +26,9 @@ button {
 	background: none;
 	border: 0;
 }
+.preload * {
+    transition: none !important;
+}
 .row {
 	margin: 0;
 }
