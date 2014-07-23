@@ -215,6 +215,10 @@ $(function() {
 		});
 	});
 
+	setTimeout(function() {
+		// Turn on transitions.
+		$("body").removeClass("preload");
+	}, 500);
 
 	var UserModel = Backbone.Model.extend({
 		urlRoot: '/user'
@@ -222,7 +226,7 @@ $(function() {
 	
 	/* Session */
 	var SessionModel = Backbone.Model.extend({
-      
+
         urlRoot: '/session',
         initialize: function () {
           var that = this;
@@ -261,9 +265,9 @@ $(function() {
               // The server also returns a new csrf token so that
               // the user can relogin without refreshing the page
               that.set({auth: false});//, _csrf: resp._csrf});
-              
+
             }
-          });      
+          });
         },
         getAuth: function(callback) {
           // getAuth is wrapped around our router
@@ -272,7 +276,7 @@ $(function() {
               success: callback
           });
         }
-      }); 
+      });
       var Session = new SessionModel();
       Session.getAuth(function (session) {
 

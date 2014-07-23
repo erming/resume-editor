@@ -1,14 +1,9 @@
-@import url(
-	http://fonts.googleapis.com/css?family=Lato:400,700
-);
-
 html,
 body {
 	height: 100%;
 }
 body {
 	color: #222;
-	font: 14px Lato, sans-serif;
 	margin: 0;
 }
 a {
@@ -25,6 +20,9 @@ h3 {
 button {
 	background: none;
 	border: 0;
+}
+.preload * {
+    transition: none !important;
 }
 .row {
 	margin: 0;
@@ -45,9 +43,7 @@ button {
 	overflow-y: auto;
 }
 #edit label {
-	font-size: 12px;
 	margin: 0;
-	/*margin-top: 10px;*/
 }
 #edit input.no-border,
 #edit label:last-child input {
@@ -56,9 +52,9 @@ button {
 #edit input,
 #edit textarea {
 	border: 0;
-	/*border: 1px solid #ddd;*/
 	border-bottom: 1px solid #ddd;
-	font-size: 12px;
+	font-size: 13px;
+	font-weight: normal;
 	margin: 2px 0 0;
 	outline: 0;
 	padding: 6px 8px;
@@ -67,10 +63,6 @@ button {
 	resize: none;
 	transition: border-color .2s;
 	width: 100%;
-}
-#edit input:hover,
-#edit input:focus {
-	/*border: 1px solid #aaa;*/
 }
 #edit [class*='col-xs-'] {
 	padding: 0 10px;
@@ -141,7 +133,9 @@ button {
 #edit .header {
 	background: #f5f5f5;
 	border-bottom-color: #ccc;
+	color: #444;
 	font-size: 14px;
+	font-weight: bold;
 	cursor: pointer;
 	padding: 12px 20px;
 	position: relative;
@@ -162,7 +156,7 @@ button {
 	color: #888;
 	font: 11px FontAwesome;
 	position: absolute;
-	margin-top: 4px;
+	margin-top: 7px;
 	right: 20px;
 }
 #edit .collapsed {
@@ -175,7 +169,7 @@ button {
 }
 #edit .content strong {
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 11px;
 	position: absolute;
 	color: #999;
 	margin: 9px 8px;
