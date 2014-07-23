@@ -339,23 +339,24 @@
 	<!-- MODALS -->
 
 	<!-- REGISTER MODAL -->
-		<div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+		<div class="modal " id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 		  <div class="modal-dialog" style="width: 400px;">
+		  	<form class="register-form">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h4 class="modal-title" id="myModalLabel">Register an Account</h4>
 		      </div>
 		      <div class="modal-body">
-		        <input type="text" class="form-control" placeholder="Email" required autofocus><br />
-		        <input type="text" class="form-control" placeholder="Username" required><br />
-                <input type="password" class="form-control" placeholder="Password" required>
-                </form>
+		        <input type="text" class="form-control register-email" placeholder="Email" required autofocus><br />
+		        <input type="text" class="form-control register-username" placeholder="Username" required><br />
+                <input type="password" class="form-control register-password" placeholder="Password" required>
 		      </div>
 		      <div class="modal-footer">
 					<button id="reset" class="button">Register</button>
 		        
 		      </div>
 		    </div>
+		    </form>
 		  </div>
 		</div>
 	<!-- REGISTER MODAL -->

@@ -216,7 +216,10 @@ $(function() {
 	});
 
 
-
+	var UserModel = Backbone.Model.extend({
+		urlRoot: '/user'
+	});
+	
 	/* Session */
 	var SessionModel = Backbone.Model.extend({
       
@@ -304,6 +307,9 @@ $(function() {
       $('#login-button').on('click', function (ev) {
 		jq('#login-modal').modal('show');
       });
+      $('#register-button').on('click', function (ev) {
+		jq('#register-modal').modal('show');
+      });
       $('#logout-button').on('click', function (ev) {
       	Session.logout();
 
@@ -335,6 +341,30 @@ $(function() {
 	  		$('#register-button').toggle();
 	  		$('#login-button').toggle();
       	});
+      	('.register-form').on('submit', function (ev) {
+      	var form = $(ev.currentTarget);
+      	var email = $('.register-email', form).val();
+      	var username = $('.register-username', form).val();
+      	var password = $('.register-password', form).val();
+
+      	/*
+      	Session.login({
+      		email: email,
+      		password: password
+      	}, function () {
+      		console.log('a');
+			$('#login-modal').modal('hide');
+			$.ajax('http://registry.jsonresume.org/'+Session.get('username')+'.json', {
+	      		success: function (res) {
+	      			var resumeObj = res;
+					resetBuilder(resumeObj);
+	      		}
+      		});
+
+	  		$('#logout-button').toggle();
+	  		$('#register-button').toggle();
+	  		$('#login-button').toggle();
+      	});/*
       	return false;
       });
 });
