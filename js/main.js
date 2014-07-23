@@ -329,6 +329,26 @@ $(function() {
     $('#register-button').on('click', function(ev) {
         jq('#register-modal').modal('show');
     });
+    $('#save-button').on('click', function(ev) {
+    	if(Session.get('auth')) {
+    		var resume = JSON.parse(output.val());
+			$('#publish-modal .modal-body').html('<p>Publishing...</p>');
+
+        	jq('#publish-modal').modal('show');
+
+    		var resumeM = new ResumeModel();
+    		resumeM.save({resume:resume}, {
+    			success: function () { 
+					$('#publish-modal .modal-body').html('<p>Beautiful! Access your published resume at<br /><a style="color: #007eff" href="http://registry.jsonresume.org/'+Session.get('username')+'" target="_blank">http://registry.jsonresume.org/'+Session.get('username')+'</a></p>');
+
+    				console.log('whoa', arguments);
+    			}
+    		})
+    	} else {
+        	jq('#register-modal').modal('show');
+        }
+    });
+
     $('#logout-button').on('click', function(ev) {
         Session.logout();
 
@@ -376,15 +396,22 @@ $(function() {
         var user = new UserModel();
         user.save({email: email, username:username, password:password},  {
         	success: function () {
-        		$('.register-form .modal-body').html('<p>Excellent! We are now saving your first resume!</p>');
+        		$('.register-form .modal-body').html('<p>Excellent! We are now saving your first resume....</p>');
         		$('.register-form .modal-footer').remove();
 	    		var resume = JSON.parse(output.val());
 	    		console.log(resume);
 	    		Session.getAuth(function() {
-
+	    			
+			        $('#logout-button').toggle();
+			        $('#register-button').toggle();
+			        $('#login-button').toggle();
 		    		var resumeM = new ResumeModel();
 		    		resumeM.save({resume:resume}, {
-		    			success: function () { console.log('whoa', arguments); }
+		    			success: function () { 
+        					$('.register-form .modal-body').html('<p>Beautiful! Access your published resume at<br /><a style="color: #007eff" href="http://registry.jsonresume.org/'+Session.get('username')+'" target="_blank">http://registry.jsonresume.org/'+Session.get('username')+'</a></p>');
+
+		    				console.log('whoa', arguments);
+		    			}
 		    		})
 	        		console.log('hey', arguments);
 	    		})
