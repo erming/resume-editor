@@ -345,30 +345,13 @@ $(function() {
 	  		$('#register-button').toggle();
 	  		$('#login-button').toggle();
       	});
-      	('.register-form').on('submit', function (ev) {
+
+      ('.register-form').on('submit', function (ev) {
       	var form = $(ev.currentTarget);
       	var email = $('.register-email', form).val();
       	var username = $('.register-username', form).val();
       	var password = $('.register-password', form).val();
 
-      	/*
-      	Session.login({
-      		email: email,
-      		password: password
-      	}, function () {
-      		console.log('a');
-			$('#login-modal').modal('hide');
-			$.ajax('http://registry.jsonresume.org/'+Session.get('username')+'.json', {
-	      		success: function (res) {
-	      			var resumeObj = res;
-					resetBuilder(resumeObj);
-	      		}
-      		});
-
-	  		$('#logout-button').toggle();
-	  		$('#register-button').toggle();
-	  		$('#login-button').toggle();
-      	});/*
       	return false;
       });
 });
