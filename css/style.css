@@ -57,9 +57,7 @@ button {
 	font-weight: normal;
 	margin: 2px 0 0;
 	outline: 0;
-	padding: 6px 8px;
 	padding: 6px 0px;
-	padding-top: 25px;
 	resize: none;
 	transition: border-color .2s;
 	width: 100%;
@@ -170,10 +168,7 @@ button {
 #edit .content strong {
 	font-weight: normal;
 	font-size: 11px;
-	position: absolute;
 	color: #999;
-	margin: 9px 8px;
-	margin: 9px 0px;
 }
 #edit .content .row {
 	padding: 12px 10px;
@@ -245,7 +240,7 @@ button {
 #preview {
 	background: #fff;
 	bottom: 0;
-	left: 260px;
+	left: 320px;
 	overflow: hidden;
 	position: absolute;
 	right: 0;

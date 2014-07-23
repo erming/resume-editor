@@ -4,7 +4,7 @@ jq = $;
 
 $(function() {
     var edit = $("#edit");
-    var inputs = edit.find("input").val("");
+    var inputs = edit.find("input, textarea").val("");
 
     var resume = {};
 
@@ -29,14 +29,14 @@ $(function() {
                 return;
             }
 
-            if (self.prop("tagName") == "INPUT") {
+            if (self.prop("tagName") == "INPUT" || self.prop("tagName") == "TEXTAREA") {
                 value = self.val();
             } else {
                 value = [];
                 self.each(function() {
                     var self = $(this);
                     var hash = {};
-                    self.find("input").each(function() {
+                    self.find("input, textarea").each(function() {
                         var self = $(this);
                         hash[self.attr("name")] = self.hasClass("list") ? self.val().split(",") : self.val();
                     });
@@ -75,7 +75,7 @@ $(function() {
                 for (var i in obj) {
                     for (var ii in obj[i]) {
                         var value = obj[i][ii];
-                        item.find("input[name='" + ii + "']").val(
+                        item.find("[name='" + ii + "']").val(
                             $.type(value) == "array" ? value.join(", ") : value
                         );
                     }
@@ -107,7 +107,6 @@ $(function() {
         });
     }
 
-
     var output = $("#output");
     var timer = null;
 
@@ -122,7 +121,7 @@ $(function() {
         container: "body"
     });
 
-    edit.on("input", "input", function() {
+    edit.on("input", "input, textarea", function() {
         update();
     });
 

@@ -22,22 +22,12 @@
 		<div id="edit">
 			<div class="actions">
 				<div class="pull-right">
-					<button id="export"
-						class="button"
-						data-placement="bottom"
-						title="Download JSON">
-					</button>
-					<button id="save-button"
-						class="button"
-						data-placement="bottom"
-						title="Publish to jsonresume.org">
-						Publish
-					</button>
+					<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
+					<button id="save-button" class="button" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
 				</div>
 				<button id="login-button" class="button" style="display: none;">Login</button>
 				<button id="register-button" class="button" style="display: none;">Register</button>
 				<button id="logout-button" class="button" style="display: none;">Logout</button>
-
 			</div>
 			<div class="theme">
 				Select theme:
@@ -89,7 +79,7 @@
 						</label>
 						<label class="col-xs-12">
 							<strong>Summary</strong>
-							<input data-name="bio.summary">
+							<textarea data-name="bio.summary" rows="3"></textarea>
 						</label>
 						<label class="col-xs-12">
 							<strong>City</strong>
@@ -140,7 +130,7 @@
 								</label>
 								<label class="col-xs-12">
 									<strong>Summary</strong>
-									<input name="summary">
+									<textarea name="summary" rows="3"></textarea>
 								</label>
 							</div>
 						</div>
