@@ -3,6 +3,7 @@ body {
 	height: 100%;
 }
 body {
+	background: #eee;
 	color: #222;
 	margin: 0;
 }
@@ -247,7 +248,11 @@ button {
 	overflow: hidden;
 	position: absolute;
 	right: 0;
+	transition: opacity .3s;
 	top: 0;
+}
+#preview.loading {
+	opacity: .5;
 }
 #preview #overlay {
 	bottom: 0;

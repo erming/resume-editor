@@ -112,9 +112,10 @@ $(function() {
 
     output.on("input", function() {
         clearTimeout(timer);
+				preview.addClass("loading");
         timer = setTimeout(function() {
             edit.trigger("output");
-        }, 120);
+        }, 200);
     });
 
     $("#export, #save").tooltip({
@@ -147,6 +148,7 @@ $(function() {
             url: "http://themes.jsonresume.org/theme/" + theme,
             success: function(html) {
                 $("#iframe").contents().find("body").html(html);
+								preview.removeClass("loading");
             }
         });
     });
