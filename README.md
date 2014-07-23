@@ -6,12 +6,3 @@ This is the live editor for http://jsonresume.org/
 
 It's currently under development, but feel free to try it out:  
 http://erming.github.io/resume-edit
-
-### TODO:
-
-A list of things that should be implemented shortly:
-
-- [ ] Preloader
-- [x] JSON export
-- [x] Resizable sidebar
-- [x] "Add" buttons
