@@ -335,7 +335,7 @@ $(function() {
             password: password
         }, function() {
             console.log('a');
-            $('#login-modal').modal('hide');
+            jq('#login-modal').modal('hide');
             $.ajax('http://registry.jsonresume.org/' + Session.get('username') + '.json', {
                 success: function(res) {
                     var resumeObj = res;
