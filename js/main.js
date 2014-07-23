@@ -348,7 +348,7 @@ $(function() {
             $('#login-button').toggle();
         });
     });
-    ('.register-form').on('submit', function(ev) {
+    $('.register-form').on('submit', function(ev) {
         var form = $(ev.currentTarget);
         var email = $('.register-email', form).val();
         var username = $('.register-username', form).val();
