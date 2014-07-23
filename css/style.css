@@ -62,6 +62,9 @@ button {
 	transition: border-color .2s;
 	width: 100%;
 }
+#edit textarea {
+	resize: vertical;
+}
 #edit [class*='col-xs-'] {
 	padding: 0 10px;
 }
