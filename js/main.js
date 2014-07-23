@@ -234,7 +234,7 @@ $(function() {
 		if (!options.xhrFields) {
 		  options.xhrFields = {withCredentials:true};
 		}
-        options.url = 'http://registry.jsonresume.org/' + model.url();
+        options.url = 'http://registry.jsonresume.org' + model.url();
 		return proxiedSync(method, model, options);
 	};
     /* Session */
