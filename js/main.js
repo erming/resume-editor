@@ -102,7 +102,7 @@ $(function() {
     }
 
     function reset() {
-        $.getJSON("resume.json", function(json) {
+        $.getJSON("default.json", function(json) {
             resetBuilder(json);
         });
     }
@@ -221,10 +221,22 @@ $(function() {
         $("body").removeClass("preload");
     }, 500);
 
-    var UserModel = Backbone.Model.extend({
-        urlRoot: '/user'
-    });
 
+	var proxiedSync = Backbone.sync;
+
+	Backbone.sync = function(method, model, options) {
+		options || (options = {});
+		console.log(options, 'a');
+		if (!options.crossDomain) {
+		  options.crossDomain = true;
+		}
+
+		if (!options.xhrFields) {
+		  options.xhrFields = {withCredentials:true};
+		}
+        options.url = 'http://registry.jsonresume.org/' + model.url();
+		return proxiedSync(method, model, options);
+	};
     /* Session */
     var SessionModel = Backbone.Model.extend({
 
@@ -235,8 +247,9 @@ $(function() {
 
             // Use withCredentials to send the server cookies
             // The server must allow this through response headers
+            /*
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-                if (options.url.indexOf('session') !== -1) {
+                if (options.url.indexOf('session') !== -1 || options.url.indexOf('user') !== -1) {
                     options.url = 'http://registry.jsonresume.org/' + options.url;
                     //options.url = 'http://localhost:5000' + options.url;
                     options.xhrFields = {
@@ -247,7 +260,7 @@ $(function() {
                         jqXHR.setRequestHeader('X-CSRF-Token', that.get('_csrf'));
                     }
                 }
-            });
+            });*/
         },
         login: function(creds, callback) {
             // Do a POST to /session and send the serialized form creds
@@ -348,12 +361,35 @@ $(function() {
             $('#login-button').toggle();
         });
     });
+
+    var UserModel = Backbone.Model.extend({
+        urlRoot: '/user'
+    });
+    var ResumeModel = Backbone.Model.extend({
+        urlRoot: '/resume'
+    });
     $('.register-form').on('submit', function(ev) {
         var form = $(ev.currentTarget);
         var email = $('.register-email', form).val();
         var username = $('.register-username', form).val();
         var password = $('.register-password', form).val();
+        var user = new UserModel();
+        user.save({email: email, username:username, password:password},  {
+        	success: function () {
+        		$('.register-form .modal-body').html('<p>Excellent! We are now saving your first resume!</p>');
+        		$('.register-form .modal-footer').remove();
+	    		var resume = JSON.parse(output.val());
+	    		console.log(resume);
+	    		Session.getAuth(function() {
 
+		    		var resumeM = new ResumeModel();
+		    		resumeM.save({resume:resume}, {
+		    			success: function () { console.log('whoa', arguments); }
+		    		})
+	        		console.log('hey', arguments);
+	    		})
+        	}
+        })
         return false;
     });
 });
