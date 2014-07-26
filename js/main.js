@@ -91,13 +91,6 @@ $(function() {
         })(resumeObj);
 
         resume = resumeObj;
-
-        var hash = window.location.hash;
-        if (hash != "") {
-            var theme = edit.find(".dropdown a[href='" + hash + "']");
-            theme.trigger("click");
-        }
-
         update();
     }
 
@@ -112,7 +105,7 @@ $(function() {
 
     output.on("input", function() {
         clearTimeout(timer);
-				preview.addClass("loading");
+		preview.addClass("loading");
         timer = setTimeout(function() {
             edit.trigger("output");
         }, 200);
@@ -132,7 +125,6 @@ $(function() {
         try {
             var json = JSON.parse(output.val());
         } catch (e) {
-            console.log(output.val());
             return;
         }
 
@@ -141,6 +133,7 @@ $(function() {
             resume: json
         });
 
+        console.log("OUTPUT");
         $.ajax({
             type: "POST",
             contentType: "application/json",
@@ -152,6 +145,27 @@ $(function() {
             }
         });
     });
+
+    var themes = $(".dropdown-menu");
+    (function populateThemeMenu() {
+        themes.empty();
+        $.getJSON("http://themes.jsonresume.org/themes.json", function(json) {
+            if (!json.themes) {
+                return;
+            }
+            for (var t in json.themes) {
+                var version = $("<div class='version'>" + json.themes[t].versions.pop() + "</div>");
+                var link = $("<a href='#" + t + "'>" + t + "</a>").append(version);
+                var item = $("<li>").append(link);
+                themes.append(item);
+            }
+            var hash = window.location.hash;
+            if (hash != "") {
+                var theme = edit.find(".dropdown a[href='" + hash + "']");
+                theme.trigger("click");
+            }
+        });
+    })();
 
     edit.on("click", "input", function() {
         $(this).select();
@@ -339,7 +353,7 @@ $(function() {
 
     		var resumeM = new ResumeModel();
     		resumeM.save({resume:resume}, {
-    			success: function () { 
+    			success: function () {
 					$('#publish-modal .modal-body').html('<p>Beautiful! Access your published resume at<br /><a style="color: #007eff" href="http://registry.jsonresume.org/'+Session.get('username')+'" target="_blank">http://registry.jsonresume.org/'+Session.get('username')+'</a></p>');
 
     				console.log('whoa', arguments);
@@ -402,13 +416,13 @@ $(function() {
 	    		var resume = JSON.parse(output.val());
 	    		console.log(resume);
 	    		Session.getAuth(function() {
-	    			
+
 			        $('#logout-button').toggle();
 			        $('#register-button').toggle();
 			        $('#login-button').toggle();
 		    		var resumeM = new ResumeModel();
 		    		resumeM.save({resume:resume}, {
-		    			success: function () { 
+		    			success: function () {
         					$('.register-form .modal-body').html('<p>Beautiful! Access your published resume at<br /><a style="color: #007eff" href="http://registry.jsonresume.org/'+Session.get('username')+'" target="_blank">http://registry.jsonresume.org/'+Session.get('username')+'</a></p>');
 
 		    				console.log('whoa', arguments);
