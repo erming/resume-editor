@@ -133,7 +133,6 @@ $(function() {
             resume: json
         });
 
-        console.log("OUTPUT");
         $.ajax({
             type: "POST",
             contentType: "application/json",
