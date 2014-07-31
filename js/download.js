@@ -13,7 +13,7 @@ function download(strData, strFileName, strMimeType) {
 	if ('download' in a) { //html5 A[download]
 		if(window.URL){
 			a.href= window.URL.createObjectURL(new Blob([strData]));
-			
+
  		}else{
 			a.href = "data:" + strMimeType + "," + encodeURIComponent(strData);
 		}
@@ -28,7 +28,7 @@ function download(strData, strFileName, strMimeType) {
 		return true;
 	} /* end if('download' in a) */
 
-	
+
 	//do iframe dataURL download (old ch+FF):
 	var f = D.createElement("iframe");
 	D.body.appendChild(f);
@@ -38,4 +38,4 @@ function download(strData, strFileName, strMimeType) {
 		D.body.removeChild(f);
 	}, 333);
 	return true;
-} /* end download() */
+}

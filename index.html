@@ -3,374 +3,88 @@
 	<head>
 
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 	<title>Edit</title>
 
+	<link rel="shortcut icon" href="favicon.png">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="json-builder/css/json-builder.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
-
-	<link rel="shortcut icon" href="favicon.png">
 
 	</head>
 	<body class="preload">
 
-	<textarea id="output" style="display: none;"></textarea>
-
 	<aside id="sidebar">
-		<div id="edit">
-			<div class="actions">
-				<div class="pull-right">
-					<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
-					<button id="save-button" class="button" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
-				</div>
-				<button id="login-button" class="button" style="display: none;">Login</button>
-				<button id="register-button" class="button" style="display: none;">Register</button>
-				<button id="logout-button" class="button" style="display: none;">Logout</button>
-			</div>
-			<div class="theme">
-				Select theme:
-				<div class="dropdown">
-					<button class="dropdown-toggle" data-toggle="dropdown">
-						Theme
-					</button>
-					<ul class="dropdown-menu"></ul>
-				</div>
-			</div>
-			<section class="panel">
-				<header class="header collapsed" data-target="#bio" data-toggle="collapse" data-parent="#edit">
-					Bio
-				</header>
-				<div id="bio" class="collapse content">
-					<div class="row">
-						<label class="col-xs-6">
-							<strong>First Name</strong>
-							<input data-name="bio.firstName" autofocus>
-						</label>
-						<label class="col-xs-6">
-							<strong>Last Name</strong>
-							<input data-name="bio.lastName">
-						</label>
-						<label class="col-xs-12">
-							<strong>Summary</strong>
-							<textarea data-name="bio.summary" rows="3"></textarea>
-						</label>
-						<label class="col-xs-12">
-							<strong>City</strong>
-							<input data-name="bio.location.city">
-						</label>
-						<label class="col-xs-12">
-							<strong>Email</strong>
-							<input data-name="bio.email.personal">
-						</label>
-						<label class="col-xs-12">
-							<strong>Phone</strong>
-							<input data-name="bio.phone.personal">
-						</label>
-					</div>
-				</div>
-			</section>
-			<section class="panel">
-				<header class="header collapsed" data-target="#work" data-toggle="collapse" data-parent="#edit">
-					Work
-				</header>
-				<div id="work" class="collapse content">
-					<div class="row">
-						<div class="array" data-name="work">
-							<div class="handle">
-								<button class="delete button danger">Delete</button>
-								Work
-							</div>
-							<div class="collapse">
-								<label class="col-xs-12">
-									<strong>Company</strong>
-									<input name="company">
-								</label>
-								<label class="col-xs-12">
-									<strong>Position</strong>
-									<input name="position">
-								</label>
-								<label class="col-xs-6">
-									<strong>Start date</strong>
-									<input name="startDate">
-								</label>
-								<label class="col-xs-6">
-									<strong>End date</strong>
-									<input name="endDate">
-								</label>
-								<label class="col-xs-12">
-									<strong>Website</strong>
-									<input name="website">
-								</label>
-								<label class="col-xs-12">
-									<strong>Summary</strong>
-									<textarea name="summary" rows="3"></textarea>
-								</label>
-							</div>
-						</div>
-						<button class="add button">
-							Add work
-						</button>
-					</div>
-				</div>
-			</section>
-			<section class="panel">
-				<header class="header collapsed" data-target="#education" data-toggle="collapse" data-parent="#edit">
-					Education
-				</header>
-				<div id="education" class="collapse content">
-					<div class="row">
-						<div class="array" data-name="education">
-							<div class="handle">
-								<button class="delete button danger">Delete</button>
-								Education
-							</div>
-							<div class="collapse">
-								<label class="col-xs-12">
-									<strong>Institution</strong>
-									<input name="institution">
-								</label>
-								<label class="col-xs-6">
-									<strong>Start date</strong>
-									<input name="startDate">
-								</label>
-								<label class="col-xs-6">
-									<strong>End date</strong>
-									<input name="endDate">
-								</label>
-								<label class="col-xs-12">
-									<strong>Area</strong>
-									<input name="area">
-								</label>
-								<label class="col-xs-12">
-									<strong>Study Type</strong>
-									<input name="studyType">
-								</label>
-								<label class="col-xs-12">
-									<strong>Courses</strong>
-									<input name="courses" class="list">
-								</label>
-							</div>
-						</div>
-						<button class="add button">
-							Add course
-						</button>
-					</div>
-				</div>
-			</section>
-			<section class="panel">
-				<header class="header collapsed" data-target="#awards" data-toggle="collapse" data-parent="#edit">
-					Awards
-				</header>
-				<div id="awards" class="collapse content">
-					<div class="row">
-						<div class="array" data-name="awards">
-							<div class="handle">
-								<button class="delete button danger">Delete</button>
-								Award
-							</div>
-							<div class="collapse">
-								<label class="col-xs-12">
-									<strong>Title</strong>
-									<input name="title">
-								</label>
-								<label class="col-xs-6">
-									<strong>Date</strong>
-									<input name="date" class="no-border">
-								</label>
-								<label class="col-xs-6">
-									<strong>Awarder</strong>
-									<input name="awarder">
-								</label>
-							</div>
-						</div>
-						<button class="add button">
-							Add award
-						</button>
-					</div>
-				</div>
-			</section>
-			<section class="panel">
-				<header class="header collapsed" data-target="#publications" data-toggle="collapse" data-parent="#edit">
-					Publications
-				</header>
-				<div id="publications" class="collapse content">
-					<div class="row">
-						<div class="array" data-name="publications">
-							<div class="handle">
-								<button class="delete button danger">Delete</button>
-								Publication
-							</div>
-							<div class="collapse">
-								<label class="col-xs-12">
-									<strong>Name</strong>
-									<input name="name">
-								</label>
-								<label class="col-xs-6">
-									<strong>Publisher</strong>
-									<input name="publisher">
-								</label>
-								<label class="col-xs-6">
-									<strong>Date</strong>
-									<input name="releaseDate">
-								</label>
-								<label class="col-xs-12">
-									<strong>Website</strong>
-									<input name="website">
-								</label>
-							</div>
-						</div>
-						<button class="add button">
-							Add publication
-						</button>
-					</div>
-				</div>
-			</section>
-			<section class="panel">
-				<header class="header collapsed" data-target="#skills" data-toggle="collapse" data-parent="#edit">
-					Skills
-				</header>
-				<div id="skills" class="collapse content">
-					<div class="row">
-						<div class="array" data-name="skills">
-							<div class="handle">
-								<button class="delete button danger">Delete</button>
-								Skill
-							</div>
-							<div class="collapse">
-								<label class="col-xs-12">
-									<strong>Name</strong>
-									<input name="name">
-								</label>
-								<label class="col-xs-12">
-									<strong>Level</strong>
-									<input name="level">
-								</label>
-								<label class="col-xs-12">
-									<strong>Keywords</strong>
-									<input name="keywords" class="list">
-								</label>
-							</div>
-						</div>
-						<button class="add button">
-							Add skill
-						</button>
-					</div>
-				</div>
-			</section>
-			<section class="panel">
-				<header class="header collapsed" data-target="#references" data-toggle="collapse" data-parent="#edit">
-					References
-				</header>
-				<div id="references" class="collapse content">
-					<div class="row">
-						<div class="array panel" data-name="references">
-							<div class="handle">
-								<button class="delete button danger">Delete</button>
-								Reference
-							</div>
-							<div class="collapse">
-								<label class="col-xs-12">
-									<strong>Name</strong>
-									<input name="name">
-								</label>
-								<label class="col-xs-12">
-									<strong>Reference</strong>
-									<input name="reference">
-								</label>
-							</div>
-						</div>
-						<button class="add button">
-							Add reference
-						</button>
-					</div>
-				</div>
-			</section>
-			<footer id="footer">
-				<a href="http://jsonresume.org/" target="_blank">
-					<strong>JSON</strong> Resume
-				</a>
-			</footer>
+		<div class="actions">
+			<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
 		</div>
+		<div id="form"></div>
 	</aside>
 	<div id="preview">
-		<div id="overlay"></div>
 		<iframe id="iframe"></iframe>
 	</div>
 
-	<!-- MODALS -->
-
-	<!-- REGISTER MODAL -->
-		<div class="modal " id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-		  <div class="modal-dialog" style="width: 400px;">
-		  	<form class="register-form">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h4 class="modal-title" id="myModalLabel">Register an Account</h4>
-		      </div>
-		      <div class="modal-body">
-		        <input type="text" class="form-control register-email" placeholder="Email" required autofocus><br />
-		        <input type="text" class="form-control register-username" placeholder="Username" required><br />
-                <input type="password" class="form-control register-password" placeholder="Password" required>
-		      </div>
-		      <div class="modal-footer">
-					<button type="submit" class="button">Register</button>
-
-		      </div>
-		    </div>
-		    </form>
-		  </div>
+	<div class="modal" id="register-modal" tabindex="-1">
+		<div class="modal-dialog" style="width: 400px;">
+			<form class="register-form">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Register an Account</h4>
+					</div>
+					<div class="modal-body">
+						<input type="text" class="form-control register-email" placeholder="Email" required autofocus><br />
+						<input type="text" class="form-control register-username" placeholder="Username" required><br />
+						<input type="password" class="form-control register-password" placeholder="Password" required>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="button">Register</button>
+					</div>
+				</div>
+			</form>
 		</div>
-	<!-- REGISTER MODAL -->
-
-	<!-- LOGIN MODAL -->
-	<div class="modal " id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-
-	  <div class="modal-dialog" style="width: 400px;">
-	  	<form class="login-form">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h4 class="modal-title" id="myModalLabel">Login to your Account</h4>
-	      </div>
-	      <div class="modal-body">
-	        <input type="text" class="form-control login-email" value="thomasalwyndavis@gmail.com" placeholder="Email" required autofocus><br />
-            <input type="password" class="form-control login-password" placeholder="Password" value="" required>
-	      </div>
-	      <div class="modal-footer">
-				<button type="submit" class="button">Login</button>
-
-	      </div>
-           </form>
-
-	    </div>
-	  </div>
 	</div>
-
-	<!-- LOGIN MODAL -->
-	<div class="modal " id="publish-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-
-	  <div class="modal-dialog" style="width: 400px;">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h4 class="modal-title" id="myModalLabel">Publish</h4>
-	      </div>
-	      <div class="modal-body">
-	       <p>Publishing...</p>
-	      </div>
-
-	    </div>
-	  </div>
+	<div class="modal" id="login-modal" tabindex="-1">
+		<div class="modal-dialog" style="width: 400px;">
+			<form class="login-form">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Login to your Account</h4>
+					</div>
+					<div class="modal-body">
+						<input type="text" class="form-control login-email" value="thomasalwyndavis@gmail.com" placeholder="Email" required autofocus><br />
+						<input type="password" class="form-control login-password" placeholder="Password" value="" required>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="button">Login</button>
+					</div>
+			</form>
+			</div>
+		</div>
 	</div>
-	<!-- LOGIN MODAL -->
-
-	<!-- END MODALS -->
+	<div class="modal" id="publish-modal" tabindex="-1">
+		<div class="modal-dialog" style="width: 400px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Publish</h4>
+				</div>
+				<div class="modal-body">
+					<p>Publishing...</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.runtime.min.js"></script>
+	<script src="json-builder/src/builder.js"></script>
+	<script src="json-builder/src/builder.templates.js"></script>
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+
 	<script src="js/download.js"></script>
 	<script src="js/main.js"></script>
 
