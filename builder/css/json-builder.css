@@ -1,0 +1,78 @@
+input {
+	border: none;
+	border-bottom: 1px solid #ddd;
+	font-size: 13px;
+	margin: 0;
+	outline: none;
+	padding: 3px 0 6px;
+	resize: none;
+	width: 100%;
+}
+button {
+	background: #ececec;
+	background-image: linear-gradient(#f4f4f4, #ececec);
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	font-size: 13px;
+	margin: 0;
+	margin-top: 10px;
+	outline: 0;
+	padding: 4px 8px;
+}
+.title {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 25px 0 15px;
+	text-transform: capitalize;
+}
+.content {
+	padding: 10px;
+}
+.array .array .title {
+	font-size: 14px;
+}
+.item {
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	overflow: hidden;
+	position: relative;
+	padding: 20px 10px 10px;
+}
+.item:before {
+	background: #ececec;
+	background-image: linear-gradient(#f4f4f4, #ececec);
+	border-bottom: 1px solid #ddd;
+	content: "";
+	position: absolute;
+	left: 0;
+	height: 10px;
+	right: 0;
+	top: 0;
+}
+.item + .item {
+	margin-top: 10px;
+}
+.item > .string input {
+	border-bottom: none;
+	padding: 0;
+}
+.item > .string .title {
+	display: none;
+}
+.string .title {
+	color: #999;
+	font-size: 11px;
+	font-family: monospace;
+	font-weight: normal;
+	margin: 0;
+}
+.string + .string,
+.string + .object {
+	margin-top: 8px;
+}
+.append {
+	margin-left: 10px;
+}
+.item .append {
+	margin-left: 0px;
+}
