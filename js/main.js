@@ -1,17 +1,12 @@
+var builder;
+
 jQuery(document).ready(function($) {
 	var form = $("#form");
-	var builder = new Builder(form);
+	builder = new Builder(form);
 
 	$.getJSON("schema.json", function(data) {
 		builder.init(data);
-		reset();
 	});
-
-	function reset() {
-		$.getJSON("resume.json", function(data) {
-			builder.setFormValues(data);
-		});
-	}
 
 	var preview = $("#preview");
 	var iframe = $("#iframe");
@@ -21,11 +16,13 @@ jQuery(document).ready(function($) {
 		clearTimeout(timer);
 		preview.addClass("loading");
 		timer = setTimeout(function() {
-			var data = JSON.stringify({
-				resume: builder.getFormValues()
+			var data = builder.getFormValues();
+			var json = JSON.stringify({
+				resume: data
 			}, null, "  ");
-			postResume(data);
 			form.data("resume", data);
+			form.data("resume.json", json);
+			postResume(json);
 		}, 200);
 	});
 
@@ -47,6 +44,12 @@ jQuery(document).ready(function($) {
     });
 
 	$("#export").on("click", function() {
-        download(form.data("resume"), "resume.json", "text/plain");
+        download(form.data("resume.json"), "resume.json", "text/plain");
     });
 });
+
+function reset() {
+	$.getJSON("resume.json", function(data) {
+		builder.setFormValues(data);
+	});
+}

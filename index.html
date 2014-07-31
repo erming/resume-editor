@@ -12,11 +12,15 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	</head>
-	<body class="preload">
+	<body>
 
 	<aside id="sidebar">
 		<div class="actions">
-			<button id="export" class="button" data-placement="bottom" title="Download JSON"></button>
+			<button id="save" class="button pull-right" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
+			<button id="export" class="button pull-right" data-placement="bottom" title="Download JSON"></button>
+			<button id="login" class="button" style="display: none;">Login</button>
+			<button id="register" class="button" style="display: none;">Register</button>
+			<button id="logout" class="button" style="display: none;">Logout</button>
 		</div>
 		<div id="form"></div>
 	</aside>
@@ -87,6 +91,7 @@
 
 	<script src="js/download.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/sync.js"></script>
 
 	</body>
 </html>
