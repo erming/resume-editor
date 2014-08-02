@@ -14,26 +14,39 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	</head>
-	<body>
+	<body class="preload">
 
 	<aside id="sidebar">
-		<div class="actions">
+		<div id="panel">
 			<div class="inner">
+			<div class="actions">
 				<button id="save" class="button pull-right" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
 				<button id="export" class="button pull-right" data-placement="bottom" title="Download JSON"></button>
 				<button id="login" class="button" style="display: none;">Login</button>
 				<button id="register" class="button" style="display: none;">Register</button>
 				<button id="logout" class="button" style="display: none;">Logout</button>
 			</div>
-		</div>
-		<div class="theme">
-			<div class="inner">
+			<div class="theme">
 				Current theme:
 				<strong>Boilerplate</strong>
 			</div>
+			<div class="tabs">
+				<a href="#editor" data-toggle="tab" class="active">Editor</a>
+				<a href="#themes" data-toggle="tab">Themes</a>
+			</div>
 		</div>
-		<div class="tse-scrollable">
-			<div id="form" class="tse-content"></div>
+		</div>
+		<div id="editor" class="tab-pane active">
+			<div class="tse-scrollable">
+				<div id="form" class="tse-content"></div>
+			</div>
+		</div>
+		<div id="themes" class="tab-pane">
+			<div class="tse-scrollable">
+				<div class="tse-content">
+					Themes
+				</div>
+			</div>
 		</div>
 	</aside>
 	<div id="preview">

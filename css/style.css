@@ -7,6 +7,9 @@ body {
 	color: #222;
 	margin: 0;
 }
+.preload * {
+	transition: none !important;
+}
 a {
 	color: inherit;
 }
@@ -29,18 +32,22 @@ input {
 	left: -0;
 	position: absolute;
 	top: 0;
-	width: 640px;
-	z-index: 2;
+	width: 480px;
 }
-#sidebar .inner {
+#sidebar #panel {
+	overflow: hidden;
+	position: relative;
+	z-index: 3;
+}
+#sidebar #panel .inner {
 	float: right;
+	height: 170px;
+	padding: 16px 20px 0;
+	position: relative;
 	width: 320px;
 }
 #sidebar .actions {
-	height: 42px;
-}
-#sidebar .actions .inner {
-	padding: 15px 20px 0;
+	overflow: hidden;
 }
 #sidebar .actions #export {
 	margin-right: 6px;
@@ -59,24 +66,46 @@ input {
 	display: block;
 	font-size: 28px;
 }
-#sidebar .theme .inner {
-	padding: 0 20px;
+#sidebar .tabs {
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
 }
-#sidebar .tse-scrollable {
-	border-top: 1px solid #ddd;
+#sidebar .tabs a {
+	border: 1px solid transparent;
+	border-bottom: 0;
+	border-radius: 2px 2px 0 0;
+	float: left;
+	padding: 6px 10px 6px;
+}
+#sidebar .tabs a.active {
+	border-color: #ddd;
 	background: #fafafa;
+}
+#sidebar .tab-pane {
+	background: #fafafa;
+	border-top: 1px solid #ddd;
 	bottom: 0;
 	left: 0;
-	height: auto;
+	opacity: 0.0;
 	position: absolute;
 	right: 0;
-	top: 135px;
-	width: auto;
+	top: 169px;
+	transition: opacity .5s;
+	z-index: 1;
+}
+#sidebar .tab-pane.active {
+	opacity: 1.0;
+	z-index: 2;
+}
+#sidebar .tse-scrollable {
+	height: 100%;
+	width: 100%;
 }
 #sidebar .tse-scrollbar {
 	bottom: 6px;
 }
-#sidebar #form {
+#sidebar .tse-content {
 	float: right;
 	padding: 20px 20px 40px;
 	width: 320px;
@@ -84,7 +113,7 @@ input {
 #preview {
 	background: #fff;
 	bottom: 0;
-	left: 640px;
+	left: 480px;
 	overflow: hidden;
 	position: absolute;
 	right: 0;
@@ -230,14 +259,6 @@ input {
 	height: 0;
 }
 
-@media (max-width: 960px){
-	#sidebar {
-		width: 480px;
-	}
-	#preview {
-		left: 480px;
-	}
-}
 @media (max-width: 720px){
 	#sidebar {
 		width: 320px;

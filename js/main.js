@@ -54,6 +54,16 @@ jQuery(document).ready(function($) {
 	$("#export, #save").tooltip({
 		container: "body"
 	});
+
+	setTimeout(function() {
+		$("body").removeClass("preload");
+	}, 200);
+
+	var tabs = $("#sidebar .tabs a");
+	tabs.on("click", function() {
+		var self = $(this);
+		self.addClass("active").siblings().removeClass("active");
+	});
 });
 
 function reset() {
