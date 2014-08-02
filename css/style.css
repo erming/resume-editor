@@ -220,3 +220,20 @@ input {
 	width: 0;
 	height: 0;
 }
+
+@media (max-width: 960px){
+	#sidebar {
+		width: 480px;
+	}
+	#preview {
+		left: 480px;
+	}
+}
+@media (max-width: 720px){
+	#sidebar {
+		width: 320px;
+	}
+	#preview {
+		left: 320px;
+	}
+}
