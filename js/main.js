@@ -39,7 +39,15 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-	$(".tse-scrollable").TrackpadScrollEmulator();
+	var scrollable = $(".tse-scrollable");
+	scrollable.TrackpadScrollEmulator();
+	scrollable.on("startDrag", function() {
+		preview.addClass("scroll");
+	});
+	scrollable.on("endDrag", function() {
+		preview.removeClass("scroll");
+	});
+
 	$("#export").on("click", function() {
 		download(form.data("resume.json"), "resume.json", "text/plain");
 	});

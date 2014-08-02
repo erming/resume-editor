@@ -95,6 +95,9 @@
       // selectable during the drag.
       e.preventDefault();
 
+      var self = $(this);
+      self.trigger('startDrag');
+
       // Measure how far the user's mouse is from the top of the scrollbar drag handle.
       var eventOffset = e.pageY;
       if (scrollDirection === 'horiz') {
@@ -103,7 +106,9 @@
       dragOffset = eventOffset - $dragHandleEl.offset()[offsetAttr];
 
       $(document).on('mousemove', drag);
-      $(document).on('mouseup', endDrag);
+      $(document).on('mouseup', function() {
+        endDrag.call(self);
+      });
     }
 
     /**
@@ -130,6 +135,7 @@
      * End scroll handle drag
      */
     function endDrag() {
+      $(this).trigger('endDrag');
       $(document).off('mousemove', drag);
       $(document).off('mouseup', endDrag);
     }
