@@ -14,6 +14,14 @@ a:hover {
 	color: #aaa;
 	text-decoration: none;
 }
+label {
+	display: block;
+	font-weight: normal;
+	margin: 0;
+}
+input {
+	background: none;
+}
 #sidebar {
 	background: #f5f5f5;
 	border-right: 1px solid #ccc;
@@ -41,35 +49,20 @@ a:hover {
 	font: 12px FontAwesome;
 	margin-top: 5px;
 }
-#sidebar #form {
-	background: #fff;
+#sidebar .tse-scrollable {
 	bottom: 0;
 	left: 0;
-	overflow-x: hidden;
-	overflow-y: auto;
-	padding: 20px;
+	height: auto;
 	position: absolute;
 	right: 0;
 	top: 50px;
+	width: auto;
 }
-#sidebar #form input {
-	font-size: 13px;
-	font-weight: normal;
+#sidebar .tse-scrollbar {
+	bottom: 6px;
 }
-#sidebar #form label {
-	margin: 0;
-	width: 100%;
-}
-#sidebar #form button {
-	font-size: 11px;
-	margin: 0;
-	margin-top: 10px;
-}
-#sidebar #form .append {
-	margin-left: 10px;
-}
-#sidebar #form .item .append {
-	margin-left: 0px;
+#sidebar #form {
+	padding: 20px 20px 40px;
 }
 #preview {
 	background: #fff;
@@ -147,4 +140,66 @@ a:hover {
 	font-weight: bold;
 	display: block;
 	margin-bottom: 5px;
+}
+
+/**
+ * TrackpadScrollEmulator
+ * Version: 1.0.6
+ * Author: Jonathan Nicol @f6design
+ * https://github.com/jnicol/trackpad-scroll-emulator
+ */
+.tse-scrollable {
+	position: relative;
+	width: 200px;  /* Default value. Overwite this if you want. */
+	height: 300px; /* Default value. Overwite this if you want. */
+	overflow: hidden;
+}
+.tse-scrollable .tse-scroll-content {
+	overflow: hidden;
+	overflow-y: scroll;
+}
+.tse-scrollable .tse-scroll-content::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+.tse-scrollbar {
+	z-index: 99;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 11px;
+}
+.tse-scrollbar .drag-handle {
+	position: absolute;
+	right: 2px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	min-height: 10px;
+	width: 7px;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-o-transition: opacity 0.2s linear;
+	-ms-transition: opacity 0.2s linear;
+	transition: opacity 0.2s linear;
+	background: #6c6e71;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+}
+.tse-scrollbar:hover .drag-handle {
+	opacity: 0.7;
+	-webkit-transition: opacity 0 linear;
+	-moz-transition: opacity 0 linear;
+	-o-transition: opacity 0 linear;
+	-ms-transition: opacity 0 linear;
+	transition: opacity 0 linear;
+}
+.tse-scrollbar .drag-handle.visible {
+	opacity: 0.7;
+}
+.scrollbar-width-tester::-webkit-scrollbar {
+	width: 0;
+	height: 0;
 }

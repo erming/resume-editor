@@ -39,13 +39,13 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-	$("#export, #save").tooltip({
-        container: "body"
-    });
-
+	$(".tse-scrollable").TrackpadScrollEmulator();
 	$("#export").on("click", function() {
-        download(form.data("resume.json"), "resume.json", "text/plain");
-    });
+		download(form.data("resume.json"), "resume.json", "text/plain");
+	});
+	$("#export, #save").tooltip({
+		container: "body"
+	});
 });
 
 function reset() {

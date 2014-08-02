@@ -3,6 +3,8 @@
 	<head>
 
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
 	<title>Edit</title>
 
 	<link rel="shortcut icon" href="favicon.png">
@@ -22,7 +24,9 @@
 			<button id="register" class="button" style="display: none;">Register</button>
 			<button id="logout" class="button" style="display: none;">Logout</button>
 		</div>
-		<div id="form"></div>
+		<div class="tse-scrollable">
+			<div id="form" class="tse-content"></div>
+		</div>
 	</aside>
 	<div id="preview">
 		<iframe id="iframe"></iframe>
@@ -90,6 +94,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
 
 	<script src="js/download.js"></script>
+	<script src="js/jquery.trackpad-scroll-emulator.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/sync.js"></script>
 
