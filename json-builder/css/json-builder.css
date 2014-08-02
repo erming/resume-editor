@@ -1,4 +1,4 @@
-input {
+.json-builder input {
 	border: none;
 	border-bottom: 1px solid #ddd;
 	font-size: 13px;
@@ -8,71 +8,72 @@ input {
 	resize: none;
 	width: 100%;
 }
-button {
-	background: #ececec;
-	background-image: linear-gradient(#f4f4f4, #ececec);
-	border: 1px solid #ddd;
-	border-radius: 2px;
-	font-size: 13px;
+.json-builder button {
+	font-size: 11px;
 	margin: 0;
-	margin-top: 10px;
 	outline: 0;
 	padding: 4px 8px;
 }
-.title {
+.json-builder button:hover {
+	opacity: .8;
+}
+.json-builder .title {
 	font-size: 18px;
 	font-weight: bold;
 	margin: 25px 0 15px;
 	text-transform: capitalize;
 }
-.content {
+.json-builder .content {
 	padding: 10px;
 }
-.array .array .title {
+.json-builder .array .array .title {
 	font-size: 14px;
 }
-.item {
+.json-builder .item {
+	background: #fff;
 	border: 1px solid #ddd;
 	border-radius: 2px;
+	margin-bottom: 10px;
 	overflow: hidden;
-	position: relative;
 	padding: 20px 10px 10px;
 }
-.item:before {
+.json-builder .item .handle {
 	background: #ececec;
 	background-image: linear-gradient(#f4f4f4, #ececec);
 	border-bottom: 1px solid #ddd;
-	content: "";
-	position: absolute;
-	left: 0;
-	height: 10px;
-	right: 0;
-	top: 0;
+	cursor: row-resize;
+	overflow: hidden;
+	margin: -20px -10px 10px;
+	min-height: 10px;
 }
-.item + .item {
-	margin-top: 10px;
-}
-.item > .string input {
+.json-builder .item > .string input {
 	border-bottom: none;
 	padding: 0;
 }
-.item > .string .title {
+.json-builder .item > .string .title {
 	display: none;
 }
-.string .title {
+.json-builder .placeholder {
+	background: #f9f9f9;
+	border: 1px dashed #ddd;
+	border-radius: 2px;
+	margin-bottom: 10px;
+	padding: 20px 10px 10px;
+}
+.json-builder .string .title {
 	color: #999;
 	font-size: 11px;
 	font-family: monospace;
 	font-weight: normal;
 	margin: 0;
 }
-.string + .string,
-.string + .object {
+.json-builder .string + .string,
+.json-builder .string + .object {
 	margin-top: 8px;
 }
-.append {
+.json-builder .add {
 	margin-left: 10px;
 }
-.item .append {
+.json-builder .item .add {
 	margin-left: 0px;
 }

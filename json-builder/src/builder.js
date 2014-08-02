@@ -1,6 +1,7 @@
 function Builder(form) {
-	this.form = form;
+	this.form = form.addClass("json-builder");
 	this.json = null;
+	this.items = [];
 }
 
 Builder.prototype.init = function(json) {	
@@ -9,30 +10,22 @@ Builder.prototype.init = function(json) {
 
 	this.resetForm();
 	
+	var self = this;
 	var form = this.form;
-	form.on("click", ".append", function(e) {
+
+	form.on("click", ".add", function(e) {
 		e.preventDefault();
-		var self = $(this);
-		self.before(self.closest(".array").data("item"));
-		/*
-		var prev = $(this).prev(".item");
-		if (prev) {
-			prev.clone()
-				.insertAfter(prev)
-				.find("input")
-				.val("")
-				.end()
-				.find(".item:gt(0)")
-				.remove();
-		}
-		*/
+		var add = $(this);
+		var name = add.closest(".array").data("name");
+		var item = self.items[name].clone();
+		add.before(item);
 		form.trigger("change");
 	});
 
 	form.on("click", ".remove", function(e) {
 		e.preventDefault();
 		var self = $(this);
-		self.closest(".array").children(".item").last().remove();
+		self.closest(".array").children(".item:last").remove();
 		form.trigger("change");
 	});
 
@@ -43,10 +36,19 @@ Builder.prototype.init = function(json) {
 
 Builder.prototype.resetForm = function() {
 	this.form.html(this.html);
-	var arrays = this.form.find(".array").get().reverse();
+	var self = this;
+	var arrays = this.form
+		.find(".array")
+		.get()
+		.reverse();
 	$(arrays).each(function() {	
-		var self = $(this);
-		self.data("item", self.children(".item").clone());
+		var array = $(this);
+		var name = array.data("name");
+		var item = array.children(".item");
+		if (!self.items[name]) {
+			self.items[name] = item.clone();
+		}
+		item.remove();
 	});
 };
 
@@ -64,9 +66,9 @@ Builder.prototype.buildForm = function(json, name, html) {
 	case "array":
 		var items = json.items;
 		html = Handlebars.templates["array"]({
-				name: name,
-				title: title,
-				html: this.buildForm(items, name)
+			name: name,
+			title: title,
+			html: this.buildForm(items, name)
 		});
 		break;
 		
@@ -106,20 +108,12 @@ Builder.prototype.setFormValues = function(json, scope, name) {
 	var type = $.type(json);
 	switch (type) {
 	case "array":
-		var array = scope.find(".item[data-name='" + name + "']");
+		var array = scope.find(".array[data-name='" + name + "']");
+		var add = array.find(".add");
 		for (var i in json) {
-			if (i != 0) { 
-				array = array
-					.clone()
-					.find("input")
-					.val("")
-					.end()
-					.insertAfter(array)
-					.find(".item:gt(0)")
-					.remove()
-					.end();
-			}
-			this.setFormValues(json[i], array, name);
+			var item = this.items[name].clone();
+			this.setFormValues(json[i], item, name);
+			add.before(item)
 		}
 		break;
 	
@@ -139,7 +133,22 @@ Builder.prototype.setFormValues = function(json, scope, name) {
 	}
 	
 	if (name == "") {
-		this.form.trigger("change");
+		var form = this.form;
+		form.trigger("change");
+		if ($.fn.sortable) {
+			form.find(".array").sortable({
+				containment: "parent",
+				cursor: "row-resize",
+				items: ".item",
+				handle: ".handle",
+				placeholder: "placeholder",
+				forcePlaceholderSize: true,
+				scroll: false,
+				update: function() {
+					form.trigger("change");
+				}
+			});
+		}
 	}
 };
 
