@@ -4,7 +4,7 @@
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 	<title>Edit</title>
 
 	<link rel="shortcut icon" href="favicon.png">
@@ -18,11 +18,19 @@
 
 	<aside id="sidebar">
 		<div class="actions">
-			<button id="save" class="button pull-right" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
-			<button id="export" class="button pull-right" data-placement="bottom" title="Download JSON"></button>
-			<button id="login" class="button" style="display: none;">Login</button>
-			<button id="register" class="button" style="display: none;">Register</button>
-			<button id="logout" class="button" style="display: none;">Logout</button>
+			<div class="inner">
+				<button id="save" class="button pull-right" data-placement="bottom" title="Publish to jsonresume.org">Publish</button>
+				<button id="export" class="button pull-right" data-placement="bottom" title="Download JSON"></button>
+				<button id="login" class="button" style="display: none;">Login</button>
+				<button id="register" class="button" style="display: none;">Register</button>
+				<button id="logout" class="button" style="display: none;">Logout</button>
+			</div>
+		</div>
+		<div class="theme">
+			<div class="inner">
+				Current theme:
+				<strong>Boilerplate</strong>
+			</div>
 		</div>
 		<div class="tse-scrollable">
 			<div id="form" class="tse-content"></div>

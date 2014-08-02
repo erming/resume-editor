@@ -23,23 +23,24 @@ input {
 	background: none;
 }
 #sidebar {
-	background: #f5f5f5;
+	background: #fff;
 	border-right: 1px solid #ccc;
 	bottom: 0;
 	left: -0;
 	position: absolute;
 	top: 0;
-	width: 320px;
+	width: 640px;
 	z-index: 1;
 }
-#sidebar .actions {
-	background: #f5f5f5;
-	border-bottom: 1px solid #ddd;
-	height: 50px;
-	padding: 11px 14px 0;
+#sidebar .inner {
+	float: right;
+	width: 320px;
 }
-#sidebar .actions button {
-	font-size: 11px;
+#sidebar .actions {
+	height: 42px;
+}
+#sidebar .actions .inner {
+	padding: 15px 20px 0;
 }
 #sidebar .actions #export {
 	margin-right: 6px;
@@ -49,25 +50,41 @@ input {
 	font: 12px FontAwesome;
 	margin-top: 5px;
 }
+#sidebar .theme {
+	color: #999;
+	padding-top: 20px;
+}
+#sidebar .theme strong {
+	color: #000;
+	display: block;
+	font-size: 28px;
+}
+#sidebar .theme .inner {
+	padding: 0 20px;
+}
 #sidebar .tse-scrollable {
+	border-top: 1px solid #ddd;
+	background: #fafafa;
 	bottom: 0;
 	left: 0;
 	height: auto;
 	position: absolute;
 	right: 0;
-	top: 50px;
+	top: 135px;
 	width: auto;
 }
 #sidebar .tse-scrollbar {
 	bottom: 6px;
 }
 #sidebar #form {
+	float: right;
 	padding: 20px 20px 40px;
+	width: 320px;
 }
 #preview {
 	background: #fff;
 	bottom: 0;
-	left: 320px;
+	left: 640px;
 	overflow: hidden;
 	position: absolute;
 	right: 0;
