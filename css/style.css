@@ -65,6 +65,7 @@ input {
 	color: #000;
 	display: block;
 	font-size: 28px;
+	text-transform: capitalize;
 }
 #sidebar .tabs {
 	overflow: hidden;
@@ -125,6 +126,7 @@ input {
 	padding-top: 0px;
 }
 #themes-list .name {
+	display: block;
 	font-size: 18px;
 	text-transform: capitalize;
 }

@@ -45,6 +45,7 @@ jQuery(document).ready(function($) {
 			}
 		});
 		(function toggleActive() {
+			$("#theme-current").html(theme);
 			var active = $("#themes-list .item[href='#" + theme + "']").addClass("active");
 			active.siblings().removeClass("active");
 		})();
