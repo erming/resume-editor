@@ -1,3 +1,5 @@
+// Global by intention.
+// This variable will be accessed by sync.js
 var builder;
 
 jQuery(document).ready(function($) {
@@ -27,26 +29,29 @@ jQuery(document).ready(function($) {
 	});
 
 	function postResume(data) {
+		var theme = "flat";
+		var hash = window.location.hash;
+		if (hash != "") {
+			theme = hash.replace("#", "");
+		}
 		$.ajax({
 			type: "POST",
 			contentType: "application/json",
 			data: data,
-			url: "http://themes.jsonresume.org/boilerplate",
+			url: "http://themes.jsonresume.org/" + theme,
 			success: function(html) {
 				iframe.contents().find("body").html(html);
 				preview.removeClass("loading");
 			}
 		});
+		(function toggleActive() {
+			var active = $("#themes-list .item[href='#" + theme + "']").addClass("active");
+			active.siblings().removeClass("active");
+		})();
 	}
 
-	var scrollable = $(".tse-scrollable");
-	scrollable.TrackpadScrollEmulator();
-	scrollable.on("startDrag", function() {
-		preview.addClass("scroll");
-	});
-	scrollable.on("endDrag", function() {
-		preview.removeClass("scroll");
-	});
+	enableTSEplugin();
+	enableCSStransitions();
 
 	$("#export").on("click", function() {
 		download(form.data("resume.json"), "resume.json", "text/plain");
@@ -55,19 +60,58 @@ jQuery(document).ready(function($) {
 		container: "body"
 	});
 
-	setTimeout(function() {
-		$("body").removeClass("preload");
-	}, 200);
-
 	var tabs = $("#sidebar .tabs a");
 	tabs.on("click", function() {
 		var self = $(this);
 		self.addClass("active").siblings().removeClass("active");
 	});
+
+	(function getThemes() {
+		var list = $("#themes-list");
+		var item = list.find(".item").remove();
+		$.getJSON("http://themes.jsonresume.org/themes.json", function(json) {
+			var themes = json.themes;
+			if (!themes) {
+				return;
+			}
+			for (var t in themes) {
+				var theme = item
+					.clone()
+					.attr("href", "#" + t)
+					.find(".name")
+					.html(t)
+					.end()
+					.find(".version")
+					.html(themes[t].versions.pop())
+					.end()
+					.appendTo(list);
+			}
+		});
+		list.on("click", ".item", function() {
+			form.trigger("change");
+		});
+	})();
 });
 
 function reset() {
 	$.getJSON("resume.json", function(data) {
 		builder.setFormValues(data);
 	});
+}
+
+function enableTSEplugin() {
+	var scrollable = $(".tse-scrollable");
+	scrollable.TrackpadScrollEmulator();
+	scrollable.on("startDrag", function() {
+		preview.addClass("scroll");
+	});
+	scrollable.on("endDrag", function() {
+		preview.removeClass("scroll");
+	});
+}
+
+function enableCSStransitions() {
+	setTimeout(function() {
+		$("body").removeClass("preload");
+	}, 200);
 }

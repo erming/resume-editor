@@ -44,13 +44,13 @@ input {
 	height: 170px;
 	padding: 16px 20px 0;
 	position: relative;
-	width: 320px;
+	width: 280px;
 }
 #sidebar .actions {
 	overflow: hidden;
 }
 #sidebar .actions #export {
-	margin-right: 6px;
+	margin-right: 4px;
 }
 #sidebar .actions #export:before {
 	content: "\f019";
@@ -108,7 +108,31 @@ input {
 #sidebar .tse-content {
 	float: right;
 	padding: 20px 20px 40px;
-	width: 320px;
+	width: 280px;
+}
+#themes-list .item {
+	display: block;
+	padding: 10px 0;
+}
+#themes-list .item + .item {
+	border-top: 1px solid #eee;
+}
+#themes-list .item:hover,
+#themes-list .item.active {
+	color: #d14;
+}
+#themes-list .item:first-child {
+	padding-top: 0px;
+}
+#themes-list .name {
+	font-size: 18px;
+	text-transform: capitalize;
+}
+#themes-list .version {
+	color: #ccc;
+	font-size: 11px;
+	float: right;
+	margin-top: 7px;
 }
 #preview {
 	background: #fff;
