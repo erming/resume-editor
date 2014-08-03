@@ -101,6 +101,7 @@ function reset() {
 }
 
 function enableTSEplugin() {
+	var preview = $("#preview");
 	var scrollable = $(".tse-scrollable");
 	scrollable.TrackpadScrollEmulator();
 	scrollable.on("startDrag", function() {
