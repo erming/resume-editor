@@ -13,20 +13,22 @@ jQuery(document).ready(function($) {
 	var preview = $("#preview");
 	var iframe = $("#iframe");
 
-	var timer = null;
-	form.on("change", function() {
-		clearTimeout(timer);
-		preview.addClass("loading");
-		timer = setTimeout(function() {
-			var data = builder.getFormValues();
-			var json = JSON.stringify({
-				resume: data
-			}, null, "  ");
-			form.data("resume", data);
-			form.data("resume.json", json);
-			postResume(json);
-		}, 200);
-	});
+	(function() {
+		var timer = null;
+		form.on("change", function() {
+			clearTimeout(timer);
+			preview.addClass("loading");
+			timer = setTimeout(function() {
+				var data = builder.getFormValues();
+				var json = JSON.stringify({
+					resume: data
+				}, null, "  ");
+				form.data("resume", data);
+				form.data("resume.json", json);
+				postResume(json);
+			}, 200);
+		});
+	})();
 
 	function postResume(data) {
 		var theme = "flat";
@@ -92,6 +94,38 @@ jQuery(document).ready(function($) {
 			form.trigger("change");
 		});
 	})();
+	
+	var jsonEditor = $("#json-editor");
+
+	(function() {
+		var timer = null;
+		jsonEditor.on("keyup", function() {
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				try {
+					var text = jsonEditor.val();
+					builder.setFormValues(JSON.parse(text))
+				} catch(e) {
+					// ..
+				}
+			}, 200);
+		});
+	})();
+
+	form.on("change", function() {
+		var json = builder.getFormValuesAsJSON();
+		if (jsonEditor.val() !== json) {
+			jsonEditor.val(json);
+		}
+	});
+	
+	$("#sidebar .view").on("click", "a", function(e) {
+		e.preventDefault();
+		var self = $(this);
+		var type = self.data("type");
+		self.addClass("active").siblings().removeClass("active");
+		jsonEditor.toggleClass("show", type == "json");
+	});
 });
 
 function reset() {

@@ -83,6 +83,18 @@ input {
 	border-color: #ddd;
 	background: #fafafa;
 }
+#sidebar .view {
+	font-size: 11px;
+	position: absolute;
+	bottom: 8px;
+	right : 10px;
+}
+#sidebar .view a {
+	margin-right: 10px;
+}
+#sidebar .view .active {
+	color: #d14;
+}
 #sidebar .tab-pane {
 	background: #fafafa;
 	border-top: 1px solid #ddd;
@@ -143,11 +155,7 @@ input {
 	overflow: hidden;
 	position: absolute;
 	right: 0;
-	transition: opacity .3s;
 	top: 0;
-}
-#preview.loading {
-	opacity: .5;
 }
 #preview #overlay {
 	display: none;
@@ -158,11 +166,33 @@ input {
 #preview.scroll #overlay {
 	display: block;
 }
+#preview #json-editor {
+	border: 0;
+	bottom: 0;
+	display: none;
+	left: 0;
+	font: 12px monospace;
+	outline: 0;
+	padding: 20px;
+	position: absolute;
+	resize: none;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+}
+#preview #json-editor.show {
+	display: block;
+}
 #preview #iframe {
 	border: 0;
 	height: 100%;
 	margin: 0;
+	transition: opacity .3s;
 	width: 100%;
+}
+#preview.loading #iframe {
+	opacity: .5;
 }
 
 .button {
