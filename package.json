@@ -1,0 +1,11 @@
+{
+  "name": "resume-editor",
+  "version": "0.0.0",
+  "description": "The live editor for http://jsonresume.org/",
+  "author": "Mattias Erming",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/erming/resume-editor"
+  },
+  "license": "MIT"
+}

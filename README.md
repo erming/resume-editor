@@ -1,8 +1,11 @@
-# Resume Edit
+# Resume Editor
 
 This is the live editor for http://jsonresume.org/
 
-### Preview
+## Demo
 
-It's currently under development, but feel free to try it out:  
-http://erming.github.io/resume-edit
+http://erming.github.io/resume-editor
+
+## License
+
+Available under [the MIT license](http://mths.be/mit).

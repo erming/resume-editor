@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 	var form = $("#form");
 	builder = new Builder(form);
 
-	$.getJSON("schema.json", function(data) {
+	$.getJSON("json/schema.json", function(data) {
 		builder.init(data);
 	});
 
@@ -129,7 +129,7 @@ jQuery(document).ready(function($) {
 });
 
 function reset() {
-	$.getJSON("resume.json", function(data) {
+	$.getJSON("json/resume.json", function(data) {
 		builder.setFormValues(data);
 	});
 }
