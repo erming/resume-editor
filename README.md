@@ -4,6 +4,7 @@ This is the live editor for http://jsonresume.org/
 
 ## Demo
 
+Go ahead and try it:  
 http://erming.github.io/resume-editor
 
 ## License
