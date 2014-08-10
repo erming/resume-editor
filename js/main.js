@@ -17,9 +17,7 @@ jQuery(document).ready(function($) {
 		preview.addClass("loading");
 		timer = setTimeout(function() {
 			var data = builder.getFormValues();
-			var json = JSON.stringify({
-				resume: data
-			}, null, "  ");
+			var json = JSON.stringify(data, null, "  ");
 			form.data("resume", data);
 			form.data("resume.json", json);
 			postResume(json);
