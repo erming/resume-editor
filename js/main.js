@@ -20,12 +20,8 @@ jQuery(document).ready(function($) {
 			preview.addClass("loading");
 			timer = setTimeout(function() {
 				var data = builder.getFormValues();
-				var json = JSON.stringify({
-					resume: data
-				}, null, "  ");
 				form.data("resume", data);
-				form.data("resume.json", json);
-				postResume(json);
+				postResume(data);
 			}, 200);
 		});
 	})();
@@ -39,7 +35,7 @@ jQuery(document).ready(function($) {
 		$.ajax({
 			type: "POST",
 			contentType: "application/json",
-			data: data,
+			data: JSON.stringify({resume: data}, null, "  "),
 			url: "http://themes.jsonresume.org/" + theme,
 			success: function(html) {
 				iframe.contents().find("body").html(html);
@@ -57,7 +53,8 @@ jQuery(document).ready(function($) {
 	enableCSStransitions();
 
 	$("#export").on("click", function() {
-		download(form.data("resume.json"), "resume.json", "text/plain");
+		var data = form.data("resume");
+		download(JSON.stringify(data, null, "  "), "resume.json", "text/plain");
 	});
 	$("#export, #save").tooltip({
 		container: "body"
