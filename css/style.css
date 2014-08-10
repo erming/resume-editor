@@ -268,6 +268,7 @@ input {
 .tse-scrollable .tse-scroll-content {
 	overflow: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 .tse-scrollable .tse-scroll-content::-webkit-scrollbar {
 	width: 0;
@@ -289,7 +290,7 @@ input {
 	border-radius: 7px;
 	min-height: 10px;
 	width: 7px;
-	opacity: 0;
+	opacity: 0.1;
 	-webkit-transition: opacity 0.2s linear;
 	-moz-transition: opacity 0.2s linear;
 	-o-transition: opacity 0.2s linear;
@@ -315,7 +316,7 @@ input {
 	height: 0;
 }
 
-@media (max-width: 720px){
+@media (max-width: 1260px){
 	#sidebar {
 		width: 320px;
 	}
