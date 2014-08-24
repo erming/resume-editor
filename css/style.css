@@ -172,6 +172,7 @@ input {
 	display: none;
 	left: 0;
 	font: 12px monospace;
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 	height: 100%;
 	outline: 0;
 	padding: 20px;
