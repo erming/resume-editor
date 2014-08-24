@@ -1,0 +1,3 @@
+[submodule "json-builder"]
+	path = json-builder
+	url = http://github.com/erming/json-builder
