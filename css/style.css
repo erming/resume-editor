@@ -186,6 +186,10 @@ input {
 #preview #json-editor.show {
 	display: block;
 }
+#preview #iframe-wrapper {
+	height: 100%;
+	-webkit-overflow-scrolling: touch;
+}
 #preview #iframe {
 	border: 0;
 	height: 100%;
@@ -324,5 +328,10 @@ input {
 	}
 	#preview {
 		left: 320px;
+	}
+}
+@media (max-device-width: 1024px) {
+	#iframe-wrapper {
+		overflow: auto;
 	}
 }
