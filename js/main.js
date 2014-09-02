@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
 					.html(t)
 					.end()
 					.find(".version")
-					.html(themes[t].versions.pop())
+					.html(themes[t].versions.shift())
 					.end()
 					.appendTo(list);
 			}
