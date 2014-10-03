@@ -65,7 +65,10 @@ input {
 	color: #000;
 	display: block;
 	font-size: 28px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	text-transform: capitalize;
+	white-space: nowrap;
 }
 #sidebar .tabs {
 	overflow: hidden;
