@@ -143,7 +143,10 @@ input {
 #themes-list .name {
 	display: block;
 	font-size: 18px;
+	overflow: hidden;
 	text-transform: capitalize;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 #themes-list .version {
 	color: #ccc;
