@@ -1,5 +1,4 @@
 // Global by intention.
-// This variable will be accessed by sync.js
 var builder;
 
 jQuery(document).ready(function($) {
@@ -8,6 +7,7 @@ jQuery(document).ready(function($) {
 
 	$.getJSON("json/schema.json", function(data) {
 		builder.init(data);
+		reset();
 	});
 
 	var preview = $("#preview");
@@ -56,8 +56,15 @@ jQuery(document).ready(function($) {
 		var data = form.data("resume");
 		download(JSON.stringify(data, null, "  "), "resume.json", "text/plain");
 	});
-	$("#export, #save").tooltip({
+	$("#export").tooltip({
 		container: "body"
+	});
+
+
+	$("#reset").on("click", function() {
+		if (confirm("Are you sure?")) {
+			reset();
+		}
 	});
 
 	var tabs = $("#sidebar .tabs a");
@@ -91,7 +98,7 @@ jQuery(document).ready(function($) {
 			form.trigger("change");
 		});
 	})();
-	
+
 	var jsonEditor = $("#json-editor");
 
 	(function() {
@@ -115,7 +122,7 @@ jQuery(document).ready(function($) {
 			jsonEditor.val(json);
 		}
 	});
-	
+
 	$("#sidebar .view").on("click", "a", function(e) {
 		e.preventDefault();
 		var self = $(this);
