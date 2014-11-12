@@ -67,6 +67,12 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	$("#clear").on("click", function() {
+		if (confirm("Are you sure?")) {
+			clear();
+		}
+	});
+
 	var tabs = $("#sidebar .tabs a");
 	tabs.on("click", function() {
 		var self = $(this);
@@ -136,6 +142,10 @@ function reset() {
 	$.getJSON("json/resume.json", function(data) {
 		builder.setFormValues(data);
 	});
+}
+
+function clear() {
+	builder.setFormValues({});
 }
 
 function enableTSEplugin() {
