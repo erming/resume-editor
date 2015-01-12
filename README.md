@@ -1,17 +1,12 @@
 # Resume Editor
 
-This is the live editor for http://jsonresume.org/
-
-## Demo
-
-Go ahead and try it:  
-http://erming.github.io/resume-editor
+This is the live editor for http://registry.jsonresume.org/.
 
 ## Development
 
 If you're going to clone this repository, remember that `json-builder` is a submodule.
 
-After you've cloned the repository, fetch the submodule:
+So, after you've cloned the repository, fetch the submodule:
 
 ```
 git submodule update --init
@@ -19,7 +14,7 @@ git submodule update --init
 
 ### Using Grunt
 
-First, you need to install [Grunt](http://gruntjs.com/):
+Install [Grunt](http://gruntjs.com/):
 
 ```
 sudo npm -g install grunt-cli
