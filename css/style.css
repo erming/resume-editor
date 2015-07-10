@@ -17,6 +17,9 @@ a:hover {
 	color: #aaa;
 	text-decoration: none;
 }
+a:focus {
+	text-decoration: none;
+}
 label {
 	display: block;
 	font-weight: normal;
