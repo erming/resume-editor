@@ -52,10 +52,10 @@ input {
 #sidebar .actions {
 	overflow: hidden;
 }
-#sidebar .actions #export {
+#sidebar .actions .export {
 	margin-right: 4px;
 }
-#sidebar .actions #export:before {
+#sidebar .actions .export:before {
 	content: "\f019";
 	font: 12px FontAwesome;
 	margin-top: 5px;

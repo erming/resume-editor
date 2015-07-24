@@ -52,11 +52,17 @@ jQuery(document).ready(function($) {
 	enableTSEplugin();
 	enableCSStransitions();
 
-	$("#export").on("click", function() {
-		var data = form.data("resume");
-		download(JSON.stringify(data, null, "  "), "resume.json", "text/plain");
+	$(".export").on("click", function() {
+        var data, format = $(this).attr("data-format");
+        if(format === "json") {
+            data = JSON.stringify(form.data("resume"), null, " ");
+        }
+        else if(format === "html") {
+            data = iframe.contents().find("html").html();
+        }
+		download(data, "resume." + format, "text/plain");
 	});
-	$("#export").tooltip({
+	$(".export").tooltip({
 		container: "body"
 	});
 
