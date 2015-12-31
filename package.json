@@ -8,8 +8,12 @@
     "url": "http://github.com/erming/resume-editor"
   },
   "license": "MIT",
+  "scripts": {
+    "uglify": "grunt uglify"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-uglify": "^0.5.1"
   }
 }
